@@ -3,7 +3,7 @@ import React from 'react'
 
 // MUI
 import { blueGrey } from '@mui/material/colors'
-import { Box, Stack, SxProps, Theme, Typography } from '@mui/material'
+import { Stack, SxProps, Theme, Typography } from '@mui/material'
 
 // Traductions
 import useTraduction from '../../../hooks/useTraductions'
