@@ -1,11 +1,13 @@
 // Modules
-import React from 'react'
+import React, { useState } from 'react'
 
 // MUI
 import { Theme } from '@mui/system';
-import { Menu } from '@mui/icons-material';
 import { blue } from '@mui/material/colors';
-import { Box, Button, Grid, IconButton, Stack, SxProps, Typography } from '@mui/material';
+import { Box, Button, Grid, IconButton, Stack, SxProps, Typography, Menu, MenuItem } from '@mui/material';
+
+// Icons
+import MenuIcon from '@mui/icons-material/Menu';
 
 // Icons
 import { QuestionMark, Chat } from '@mui/icons-material';
@@ -71,7 +73,7 @@ function FirstBarRow () {
       <Stack direction='row' sx={stackContainer}>
         {logoImage}
         <IconButton>
-          <Menu sx={{ color:'white' }}/>
+          <MenuIcon sx={{ color:'white' }}/>
         </IconButton>
       </Stack>
       <Grid container sx={gridContainer} spacing={4}>
@@ -103,11 +105,41 @@ function FirstBarRow () {
 }
 
 function SecondBarRow () {
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Grid container sx={{ display:{ xs:'none', md:'flex' }}}>
       {tabs.map(({ title }, index) => (
         <Grid item md={2} key={index}>
-          <Button variant='text' sx={{ color:'white', width:'100%', paddingY:1 }}>{title}</Button>
+          <div>
+            <Button 
+              variant='text' 
+              sx={{ color:'white', width:'100%', paddingY:1 }} 
+              onClick={handleClick} 
+              id={`basic-button-${index}`}
+            >{title}</Button>
+            {/* <Menu
+              id={`basic-menu-${index}`}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu> */}
+          </div>
         </Grid>
       ))}
     </Grid>

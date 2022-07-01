@@ -20,8 +20,8 @@ export default function institutions() {
       <Stack rowGap={4}>
         <Typography sx={titleStyle} variant='h5'>{traduce('institutions.title')}</Typography>
         <Grid container spacing={4}>
-          {institutionLogos.map((logo) => (
-            <Grid item xs={4} sm={3} md={2} xl={1}>
+          {institutionLogos.map((logo, key) => (
+            <Grid item xs={4} sm={3} md={2} key={key}>
               <img src={logo} style={{ width:'100%' }} />
             </Grid>
           ))}

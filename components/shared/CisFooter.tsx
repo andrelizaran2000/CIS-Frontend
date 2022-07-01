@@ -9,22 +9,27 @@ import { Facebook, Instagram, WhatsApp, YouTube } from '@mui/icons-material/';
 // Images
 import { images } from '../../utils/sources'
 
+// Containers
+import PaddingContainer from '../containers/PaddingContainer';
+
 export default function CisFooter() {
   return (
-    <Stack direction='row' sx={{ paddingY:2, paddingX:4, backgroundColor:blue[900], justifyContent:'space-between', alignItems:'center' }}>
-      <img src={images.logo} style={{ width:160 }}/>
-      <Stack direction='row' columnGap={4} sx={{ display: { xs:'none', md:'flex' }}}>
-        {iconButtons.map(({ title, icon }) => (
-          <Stack direction='row' columnGap={1}>
-            { icon === 'facebook'  && <Facebook sx={{ color:'white' }}/> }
-            { icon === 'instagram' && <Instagram sx={{ color:'white' }}/> }
-            { icon === 'whatsApp'  && <WhatsApp sx={{ color:'white' }}/> }
-            { icon === 'youtube'   && <YouTube sx={{ color:'white' }}/> }
-            <Typography sx={{ color:'white' }}>{title}</Typography>
-          </Stack>
-        ))}
+    <PaddingContainer backgroundColor={blue[900]}>
+      <Stack direction='row' sx={{ justifyContent:'space-between', alignItems:'center' }}>
+        <img src={images.logo} style={{ width:160 }}/>
+        <Stack direction='row' columnGap={4} sx={{ display: { xs:'none', md:'flex' }}}>
+          {iconButtons.map(({ title, icon }, index) => (
+            <Stack direction='row' columnGap={1} key={index}>
+              { icon === 'facebook'  && <Facebook sx={{ color:'white' }}/> }
+              { icon === 'instagram' && <Instagram sx={{ color:'white' }}/> }
+              { icon === 'whatsApp'  && <WhatsApp sx={{ color:'white' }}/> }
+              { icon === 'youtube'   && <YouTube sx={{ color:'white' }}/> }
+              <Typography sx={{ color:'white' }}>{title}</Typography>
+            </Stack>
+          ))}
+        </Stack>
       </Stack>
-    </Stack>
+    </PaddingContainer>
   )
 }
 

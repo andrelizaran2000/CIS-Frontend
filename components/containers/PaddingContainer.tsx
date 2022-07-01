@@ -9,7 +9,7 @@ type Props = {
 
 export default function PaddingContainer ({ children, backgroundColor = 'white' }:Props) {
   return (
-    <Stack sx={{ padding:4, backgroundColor }} direction='column'>
+    <Stack sx={{ paddingY:4, paddingX:{ xs:4, lg:20 }, backgroundColor }} direction='column'>
       {children}
     </Stack>
   )

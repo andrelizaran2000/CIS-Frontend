@@ -8,6 +8,7 @@ import { I18nextProvider } from 'react-i18next';
 // Texts
 import index_es from '../../traductions/index_es.json';
 import about_us_es from '../../traductions/about_us_es.json';
+import news_es from '../../traductions/news_es.json';
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -15,7 +16,8 @@ i18next.init({
   resources: {
     es: { 
       index: index_es,
-      aboutUs: about_us_es 
+      aboutUs: about_us_es,
+      news: news_es 
     },
   },
 });
