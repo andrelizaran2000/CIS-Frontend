@@ -1,0 +1,16 @@
+{
+  "carousel": {
+    "yellow-text": "La tecnología de hoy, es la ciencia del mañana",
+    "white-text": "Comunidad de Ingeniería en Sistemas",
+    "blue-button": "Descubre"
+  },
+  "about-us": {
+    "title": "Acerca de nosotros",
+    "body-1": "Reprehenderit reprehenderit nulla veniam id ex mollit ipsum nulla incididunt quis dolore sunt duis. Amet aliquip anim consequat nulla sit qui do ad enim reprehenderit. Irure sint anim officia aliquip dolor quis dolore duis est irure ea.",
+    "body-2": "Dolor nisi cupidatat nostrud irure pariatur. Excepteur eu anim consectetur quis et duis ea consectetur sunt cupidatat commodo nulla ex. Nisi nostrud Lorem magna aliquip ipsum duis. Et incididunt ullamco cillum qui cupidatat. Laboris consequat tempor eu quis. Proident do officia laborum sunt cillum ea consectetur deserunt labore laborum velit amet.",
+    "button": "Conocer más"
+  },
+  "next-event": {
+    "title": "Próximo evento"
+  }
+}

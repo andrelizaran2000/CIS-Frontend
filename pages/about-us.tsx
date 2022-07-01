@@ -5,21 +5,20 @@ import React from 'react'
 import BarContainer from '../components/containers/BarContainer'
 import HeadContainer from '../components/containers/HeadContainer'
 import TraductionContainer from '../components/containers/TraductionContainer'
-import AboutUs from '../components/screen/index/AboutUs'
 
 // Components
-import NextEvent from '../components/screen/index/NextEvent'
-import MainCarousel from '../components/screen/index/MainCarousel'
+import AboutEachOfUs from '../components/screen/aboutUs/AboutUs'
+import Institutions from '../components/screen/aboutUs/Institutions'
+import Main from '../components/screen/aboutUs/Main'
 
-export default function Home () {
-  
+export default function AboutUs () {
   return (
     <TraductionContainer>
-      <HeadContainer title='Bienvenido'>
+      <HeadContainer title='¿Quiénes somos?'>
         <BarContainer>
-          <MainCarousel/>
-          <NextEvent/>
-          <AboutUs/>
+          <Main/>
+          <Institutions/>
+          <AboutEachOfUs/>
         </BarContainer>
       </HeadContainer>
     </TraductionContainer>
