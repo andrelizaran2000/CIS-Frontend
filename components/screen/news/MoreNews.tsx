@@ -2,7 +2,7 @@
 import React from 'react'
 
 // MUI
-import { Button, Card, CardContent, CardMedia, Grid, Stack, Typography } from '@mui/material'
+import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 
 // Hooks
 import useTraduction from '../../../hooks/useTraductions'
@@ -17,7 +17,7 @@ export default function MoreNews () {
   const traduce = useTraduction('news')
   return (
     <PaddingContainer>
-      <Typography sx={{ ...titleStyle, mb:4 }} variant='h5'>{traduce('news.title')}</Typography>
+      <Typography sx={{ ...titleStyle, mb:4 }} variant='h4'>{traduce('news.title')}</Typography>
       <Grid container spacing={4} mb={4}>
         {newsArray.map(({ title, body }, key) => (
           <Grid item xs={12} sm={6} md={4} lg={3} sx={{ borderRadius:2 }} key={key}>

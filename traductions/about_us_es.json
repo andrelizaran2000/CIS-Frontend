@@ -8,5 +8,9 @@
   },
   "institutions": {
     "title": "Instituciones con las que hemos trabajado"
+  },
+  "mision-vision": {
+    "mision": "Brindar conocimiento y actividades en pro de la comunidad estudiantil. Alentando al estudiante ofreciendo competencias, talleres, ponencias y cursos que mejoren sus habilidades dentro del área de Tecnologías de información.",
+    "vision": "Ser una comunidad estudiantil que colabore en la formación y capacitación del estudiante para potenciar los conocimientos adquiridos en clase y desarrollar habilidades que actualmente se encuentran en pleno auge en el mundo laboral."
   }
 }

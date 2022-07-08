@@ -19,8 +19,8 @@ export default function MainCarousel() {
 
 const firstImageStyle:SxProps<Theme> = {
   width:'100%', 
-  // backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/main-carousel.jpg?alt=media&token=25076512-b164-47d1-acc0-a9f77cdd5549")',
-  // backgroundSize: 'cover',
+  backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/welcome.png?alt=media&token=60335617-2c7a-451a-b4bc-b08eb9693a79")',
+  backgroundSize: 'cover',
   backgroundColor:grey[900],
   justifyContent:'center',
   alignItems:'center',

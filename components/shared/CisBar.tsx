@@ -13,8 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { QuestionMark, Chat } from '@mui/icons-material';
 
 // Images
-import { images } from '../../utils/sources'
-import { WhiteField } from './Common';
+import { images } from '../../utils/sources';
 
 const container:SxProps<Theme> = {
   width:'100%', 
@@ -24,7 +23,7 @@ const container:SxProps<Theme> = {
 }
 
 const flexContainer:SxProps<Theme> = {
-  paddingX:4, 
+  paddingX:{ xs:4, lg:20 }, 
   paddingY:2, 
 }
 
@@ -54,10 +53,16 @@ const gridContainer:SxProps<Theme> = {
   }
 } 
 
-const logoContainer:SxProps<Theme> = {
+const logoContainerStart:SxProps<Theme> = {
   display:'flex',
   alignItems:'center',
-  justifyContent:'center'
+  justifyContent:'start'
+}
+
+const logoContainerEnd:SxProps<Theme> = {
+  display:'flex',
+  alignItems:'center',
+  justifyContent:'end'
 }
 
 const logoImage = (
@@ -77,21 +82,19 @@ function FirstBarRow () {
         </IconButton>
       </Stack>
       <Grid container sx={gridContainer} spacing={4}>
-        <Grid item md={3} sx={logoContainer}>
+        <Grid item md={3} sx={logoContainerStart}>
           {logoImage}
         </Grid>
-        <Grid item md={6}>
-          <WhiteField variant='filled' sx={{ width:'100%' }} size="small"/>
-        </Grid> 
+        <Grid item md={6}/>
         <Grid item md={3}>
           <Grid container>
-            <Grid item md={6} sx={logoContainer}>
+            <Grid item md={6} sx={logoContainerEnd}>
               <Stack spacing={1} alignItems='center'>
                 <QuestionMark sx={{ color:'white' }}/>
                 <Typography variant='caption' sx={{ color:'white' }}>¿Quiénes somos?</Typography>
               </Stack>
             </Grid>
-            <Grid item md={6} sx={logoContainer}>
+            <Grid item md={6} sx={logoContainerEnd}>
               <Stack spacing={1} alignItems='center'>
                 <Chat sx={{ color:'white' }}/>
                 <Typography variant='caption' sx={{ color:'white' }}>Contáctanos</Typography>
@@ -126,19 +129,6 @@ function SecondBarRow () {
               onClick={handleClick} 
               id={`basic-button-${index}`}
             >{title}</Button>
-            {/* <Menu
-              id={`basic-menu-${index}`}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
-            </Menu> */}
           </div>
         </Grid>
       ))}

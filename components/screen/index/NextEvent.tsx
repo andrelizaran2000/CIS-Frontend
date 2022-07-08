@@ -19,8 +19,8 @@ export default function NextEvent () {
   return (
     <PaddingContainer>
       <Stack rowGap={2}>
-        <Typography variant='h5' color={blueGrey[900]}>{traduce('next-event.title')}</Typography>
-        <Grid container spacing={{ xs:2, sm:4 }}>
+        <Typography variant='h4' color={blueGrey[900]}>{traduce('next-event.title')}</Typography>
+        <Grid container spacing={4}>
           <Grid item xs={12} sm={6} sx={{ alignItems:'center', display:'flex' }}>
             <Stack alignItems='center' rowGap={2}>
               <Typography variant='h6' textAlign='center' sx={{ color:blueGrey[900] }}>{body}</Typography>

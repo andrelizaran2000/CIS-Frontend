@@ -17,7 +17,7 @@ export default function MainNew() {
         </Grid>
         <Grid item xs={12} md={6} lg={5} xl={6} sx={{ color:'white', alignItems:'center', justifyContent:'center', display:'flex' }}>
           <Stack rowGap={2}>
-            <Typography variant='h5'>{title}</Typography>
+            <Typography variant='h4'>{title}</Typography>
             <Typography>{subtitle}</Typography>
           </Stack>
         </Grid>

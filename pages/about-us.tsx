@@ -2,25 +2,21 @@
 import React from 'react'
 
 // Containers
-import BarContainer from '../components/containers/BarContainer'
-import HeadContainer from '../components/containers/HeadContainer'
-import TraductionContainer from '../components/containers/TraductionContainer'
+import GlobalContainer from '../components/containers/GlobalContainer'
 
 // Components
 import AboutEachOfUs from '../components/screen/aboutUs/AboutUs'
 import Institutions from '../components/screen/aboutUs/Institutions'
 import Main from '../components/screen/aboutUs/Main'
+import MisionVision from '../components/screen/aboutUs/MisionVision'
 
 export default function AboutUs () {
   return (
-    <TraductionContainer>
-      <HeadContainer title='¿Quiénes somos?'>
-        <BarContainer>
-          <Main/>
-          <Institutions/>
-          <AboutEachOfUs/>
-        </BarContainer>
-      </HeadContainer>
-    </TraductionContainer>
+    <GlobalContainer title='¿Quiénes somos?'>
+      <Main/>
+      <MisionVision/>
+      <Institutions/>
+      <AboutEachOfUs/>
+    </GlobalContainer>
   )
 }

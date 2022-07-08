@@ -22,7 +22,7 @@ export default function aboutUs () {
   return (
     <PaddingContainer>
       <Stack rowGap={4}>
-        <Typography sx={titleStyle} variant='h5'>{traduce('about-us.title')}</Typography>
+        <Typography sx={titleStyle} variant='h4'>{traduce('about-us.title')}</Typography>
         <Grid container spacing={4}>
           {membersList.map(({ name, src }, index) => <MemberItem name={name} src={src} key={index}/>)}
         </Grid>
@@ -33,7 +33,7 @@ export default function aboutUs () {
 
 type MemberItemProps = {
   name:string;
-  src:string;
+  src:any;
 }
 
 function MemberItem ({ name, src }:MemberItemProps) {
@@ -49,43 +49,35 @@ function MemberItem ({ name, src }:MemberItemProps) {
 
 const membersList:MemberItemProps[] = [
   { 
-    name:'Yelitza M. Rosas Jimenez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2081.png?alt=media&token=e00371ba-f220-4570-a8be-0ffd256472c8' 
+    name:'Iván de Jesús A. Malpica', 
+    src: '/assets/about-us/member4.png'
   },
   { 
-    name:'Rafael Rivera Lopez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2082.png?alt=media&token=fb522d67-e9d2-42a5-ad55-4ad13ff48f4b' 
+    name:'Gabriel Escobar Medina', 
+    src:'/assets/about-us/member3.png' 
   },
   { 
-    name:'Karla Mariana Cordova Vazquez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2083.png?alt=media&token=3703dadc-3dd6-4361-962d-13e134978b76' 
+    name:'Marco Gabriel Cortés Toledo', 
+    src:'/assets/about-us/member2.png'
   },
   { 
-    name:'Angel Sanchez Dominguez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2087.png?alt=media&token=1752ae33-d103-460d-9b4e-7161d2e8901e' 
+    name:'Rafael de Jesús Vera Reyes', 
+    src:'/assets/about-us/member8.png'
   },
   { 
-    name:'Miguel Angel Perez Cabada', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2086.png?alt=media&token=b8a8f668-52b7-4a50-8be7-b891e86c682d' 
+    name:'Jesús André Lizarán Blanco', 
+    src:'/assets/about-us/member1.png'
   },
   { 
-    name:'Yelitza M. Rosas Jimenez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2081.png?alt=media&token=e00371ba-f220-4570-a8be-0ffd256472c8' 
+    name:'Erick Montalvo Cruz', 
+    src:'/assets/about-us/member7.png'
   },
   { 
-    name:'Rafael Rivera Lopez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2082.png?alt=media&token=fb522d67-e9d2-42a5-ad55-4ad13ff48f4b' 
+    name:'Ángel Sanchez Domínguez', 
+    src:'/assets/about-us/member5.png'
   },
   { 
-    name:'Karla Mariana Cordova Vazquez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2083.png?alt=media&token=3703dadc-3dd6-4361-962d-13e134978b76' 
-  },
-  { 
-    name:'Angel Sanchez Dominguez', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2087.png?alt=media&token=1752ae33-d103-460d-9b4e-7161d2e8901e' 
-  },
-  { 
-    name:'Miguel Angel Perez Cabada', 
-    src:'https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/Rectangle%2086.png?alt=media&token=b8a8f668-52b7-4a50-8be7-b891e86c682d' 
-  },
+    name:'Irving Naranjo Paredes', 
+     src:'/assets/about-us/member6.png'
+  }
 ]
