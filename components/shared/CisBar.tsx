@@ -5,13 +5,10 @@ import React, { useState } from 'react';
 // MUI
 import { Theme } from '@mui/system';
 import { blue } from '@mui/material/colors';
-import { Box, Button, Grid, IconButton, Stack, SxProps, Typography, Menu, MenuItem } from '@mui/material';
+import { Box, Button, Grid, IconButton, Stack, SxProps,Dialog, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
 
 // Icons
 import MenuIcon from '@mui/icons-material/Menu';
-
-// Icons
-import { QuestionMark, Chat } from '@mui/icons-material';
 
 // Images
 import { images } from '../../utils/sources';
@@ -29,11 +26,28 @@ const flexContainer:SxProps<Theme> = {
 }
 
 export default function CisBar() {
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <Box sx={container}>
       <Stack sx={flexContainer} rowGap={2}>
-        <FirstBarRow/>
+        <FirstBarRow setIsDialogOpen={setIsDialogOpen}/>
         <SecondBarRow/>
+        <Dialog
+          fullWidth={true}
+          open={isDialogOpen}
+          onClose={() => setIsDialogOpen(false)}
+        >
+          <DialogTitle>Menú</DialogTitle>
+          <List sx={{ pt: 0, pl:1 }}>
+            {tabs.map(({ title, to }) => (
+              <ListItem button onClick={() => { Router.push(to); setIsDialogOpen(false); }}>
+                <ListItemText primary={title} />
+              </ListItem>
+            ))}
+          </List>
+        </Dialog>
       </Stack>
     </Box>
   )
@@ -50,12 +64,12 @@ const logoImage = (
   />
 )
 
-function FirstBarRow () {
+function FirstBarRow ({ setIsDialogOpen }:any) {
   return (
     <>
       <Stack direction='row' sx={stackContainer}>
         {logoImage}
-        <IconButton sx={{ display:{ xs:'block', md:'none' }}}>
+        <IconButton sx={{ display:{ xs:'block', md:'none' }}} onClick={() => setIsDialogOpen(true)}>
           <MenuIcon sx={{ color:'white' }}/>
         </IconButton>
       </Stack>
