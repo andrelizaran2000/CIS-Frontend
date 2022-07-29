@@ -112,5 +112,5 @@ const tabs:TabsType[] = [
   { title:'Registro', to:'/events' },
   { title:'Historial', to:'/' },
   { title:'Noticias', to:'/news' },
-  { title:'Contacto', to:'/' },
+  { title:'Contacto', to:'/contact' },
 ]

@@ -34,7 +34,7 @@ export default function AboutUs () {
           >
             <Stack 
               rowGap={2} 
-              sx={{ alignItems:'center', color:'white', textAlign:'justify' }}
+              sx={{ alignItems:'end', color:'white', textAlign:'right' }}
             >
               <Typography variant='h6'>
                 {traduce('about-us.body-1')}
