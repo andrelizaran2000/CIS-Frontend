@@ -1,14 +1,13 @@
 // Modules
-import React from 'react'
-
-// MUI
-import { Grid, Stack, Typography } from '@mui/material'
+import React from 'react';
+import { blueGrey } from '@mui/material/colors';
+import { Grid, Stack, Typography } from '@mui/material';
 
 // Hooks
-import useTraduction from '../../../hooks/useTraductions'
+import useTraduction from '../../../hooks/useTraductions';
 
 // Containers
-import PaddingContainer from '../../containers/PaddingContainer'
+import PaddingContainer from '../../containers/PaddingContainer';
 
 // Styles
 import { titleStyle } from './AboutUs'
@@ -18,11 +17,11 @@ export default function institutions() {
   return (
     <PaddingContainer>
       <Stack rowGap={4}>
-        <Typography sx={titleStyle} variant='h4'>{traduce('institutions.title')}</Typography>
+        <Typography sx={{ ...titleStyle, color:blueGrey[900] }} variant='h3'>{traduce('institutions.title')}</Typography>
         <Grid container spacing={4}>
           {institutionLogos.map((logo, key) => (
-            <Grid item xs={4} sm={3} md={2} lg={1} key={key} sx={{ display:'flex', alignItems:'center' }}>
-              <img src={logo} style={{ width:'90%' }} />
+            <Grid item xs={4} sm={3} md={2} key={key} sx={{ display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <img src={logo} style={{ width:'90%', maxWidth:120 }} />
             </Grid>
           ))}
         </Grid>

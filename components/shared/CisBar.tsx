@@ -1,5 +1,6 @@
 // Modules
-import React, { useState } from 'react'
+import Router from 'next/router';
+import React, { useState } from 'react';
 
 // MUI
 import { Theme } from '@mui/system';
@@ -39,30 +40,7 @@ export default function CisBar() {
 }
 
 const stackContainer:SxProps<Theme> = {
-  display:{ 
-    xs:'flex', 
-    md:'none',
-  },
-  justifyContent:'space-between'
-}
-
-const gridContainer:SxProps<Theme> = {
-  display:{ 
-    xs:'none', 
-    md:'flex',
-  }
-} 
-
-const logoContainerStart:SxProps<Theme> = {
-  display:'flex',
-  alignItems:'center',
-  justifyContent:'start'
-}
-
-const logoContainerEnd:SxProps<Theme> = {
-  display:'flex',
-  alignItems:'center',
-  justifyContent:'end'
+  justifyContent:{ xs:'space-between', md:'center' }
 }
 
 const logoImage = (
@@ -77,56 +55,29 @@ function FirstBarRow () {
     <>
       <Stack direction='row' sx={stackContainer}>
         {logoImage}
-        <IconButton>
+        <IconButton sx={{ display:{ xs:'block', md:'none' }}}>
           <MenuIcon sx={{ color:'white' }}/>
         </IconButton>
       </Stack>
-      <Grid container sx={gridContainer} spacing={4}>
-        <Grid item md={3} sx={logoContainerStart}>
-          {logoImage}
-        </Grid>
-        <Grid item md={6}/>
-        <Grid item md={3}>
-          <Grid container>
-            <Grid item md={6} sx={logoContainerEnd}>
-              <Stack spacing={1} alignItems='center'>
-                <QuestionMark sx={{ color:'white' }}/>
-                <Typography variant='caption' sx={{ color:'white' }}>¿Quiénes somos?</Typography>
-              </Stack>
-            </Grid>
-            <Grid item md={6} sx={logoContainerEnd}>
-              <Stack spacing={1} alignItems='center'>
-                <Chat sx={{ color:'white' }}/>
-                <Typography variant='caption' sx={{ color:'white' }}>Contáctanos</Typography>
-              </Stack>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
     </>
   )
 }
 
 function SecondBarRow () {
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClick = (to:string) => {
+    Router.push(to)
   };
 
   return (
     <Grid container sx={{ display:{ xs:'none', md:'flex' }}}>
-      {tabs.map(({ title }, index) => (
+      {tabs.map(({ title, to }, index) => (
         <Grid item md={2} key={index}>
           <div>
             <Button 
               variant='text' 
               sx={{ color:'white', width:'100%', paddingY:1 }} 
-              onClick={handleClick} 
+              onClick={() => handleClick(to)} 
               id={`basic-button-${index}`}
             >{title}</Button>
           </div>
@@ -142,10 +93,10 @@ type TabsType = {
 }
 
 const tabs:TabsType[] = [
-  { title:'Inicio', to:'' },
-  { title:'Eventos', to :'' },
-  { title:'Registro', to:'' },
-  { title:'Historial', to:'' },
-  { title:'Noticias', to:'' },
-  { title:'Contacto', to:'' },
+  { title:'Inicio', to:'/' },
+  { title:'Eventos', to :'/events' },
+  { title:'Registro', to:'/events' },
+  { title:'Historial', to:'/' },
+  { title:'Noticias', to:'/news' },
+  { title:'Contacto', to:'/' },
 ]

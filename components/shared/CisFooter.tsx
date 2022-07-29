@@ -16,7 +16,7 @@ export default function CisFooter() {
   return (
     <PaddingContainer backgroundColor={blue[900]}>
       <Stack direction='row' sx={{ justifyContent:'space-between', alignItems:'center' }}>
-        <img src={images.logo} style={{ width:160 }}/>
+        <img src='/assets/cis-logo.png' style={{ width:160 }}/>
         <Stack direction='row' columnGap={4} sx={{ display: { xs:'none', md:'flex' }}}>
           {iconButtons.map(({ title, icon }, index) => (
             <Stack direction='row' columnGap={1} key={index}>

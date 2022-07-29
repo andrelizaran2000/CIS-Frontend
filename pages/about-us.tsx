@@ -14,7 +14,7 @@ export default function AboutUs () {
   return (
     <GlobalContainer title='¿Quiénes somos?'>
       <Main/>
-      <MisionVision/>
+      {/* <MisionVision/> */}
       <Institutions/>
       <AboutEachOfUs/>
     </GlobalContainer>

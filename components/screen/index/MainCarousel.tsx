@@ -1,38 +1,37 @@
 // Modules
-import React from 'react'
+import React from 'react';
 
 // MUI
-import Carousel from 'react-material-ui-carousel'
-import { grey, yellow } from '@mui/material/colors'
-import { Button, Stack, SxProps, Theme, Typography } from '@mui/material'
+import Carousel from 'react-material-ui-carousel';
+import { yellow } from '@mui/material/colors';
+import { Button, Stack, Typography } from '@mui/material';
 
 // Hooks
-import useTraduction from '../../../hooks/useTraductions'
+import useTraduction from '../../../hooks/useTraductions';
 
 export default function MainCarousel() {
   return (
-    <Carousel sx={{ height:'400px' }}>
+    <Carousel sx={{ height:'500px' }}>
       <FirstImage/>
     </Carousel>
   )
 }
 
-const firstImageStyle:SxProps<Theme> = {
+const firstImageStyle = {
   width:'100%', 
-  backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/cis-frontend-81086.appspot.com/o/welcome.png?alt=media&token=60335617-2c7a-451a-b4bc-b08eb9693a79")',
+  backgroundImage: `url("assets/index/index-main-bg.png")`,
   backgroundSize: 'cover',
-  backgroundColor:grey[900],
   justifyContent:'center',
   alignItems:'center',
-  height:'400px'
+  height:500
 }
 
-const yellowTextStyle:SxProps<Theme> = {
+const yellowTextStyle = {
   color:yellow[700], 
   textAlign:'center'
 }
 
-const whiteTextStyle:SxProps<Theme> = {
+const whiteTextStyle = {
   color:'white', 
   textAlign:'center',
   textTransform:'uppercase'
@@ -45,15 +44,16 @@ function FirstImage () {
       <Stack sx={{ padding:4, alignItems:'center' }} rowGap={2}>
         <Stack>
           <Typography
-            variant='body1'
+            variant='h6'
             sx={yellowTextStyle}
+            mb={1}
           >{traduce('carousel.yellow-text')}</Typography>
           <Typography
-            variant='h5'
+            variant='h4'
             sx={whiteTextStyle}
           >{traduce('carousel.white-text')}</Typography>
         </Stack>
-        <Button variant='contained'>{traduce('carousel.blue-button')}</Button>
+        <Button variant='contained' size='large'>{traduce('carousel.blue-button')}</Button>
       </Stack>
     </Stack>
   )

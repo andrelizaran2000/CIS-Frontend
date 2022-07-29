@@ -10,11 +10,12 @@ import PaddingContainer from '../../containers/PaddingContainer'
 
 // Hooks
 import useTraduction from '../../../hooks/useTraductions'
+import { Box } from '@mui/system'
 
 export const titleStyle:SxProps<Theme> = {
   textDecoration:'underline', 
-  color:blueGrey[900],
-  textAlign:'center'
+  textAlign:'center',
+  fontWeight:'bold'
 }
 
 export default function aboutUs () {
@@ -22,7 +23,7 @@ export default function aboutUs () {
   return (
     <PaddingContainer>
       <Stack rowGap={4}>
-        <Typography sx={titleStyle} variant='h4'>{traduce('about-us.title')}</Typography>
+        <Typography sx={{ ...titleStyle, color:blueGrey[900] }} variant='h3'>{traduce('about-us.title')}</Typography>
         <Grid container spacing={4}>
           {membersList.map(({ name, src }, index) => <MemberItem name={name} src={src} key={index}/>)}
         </Grid>
@@ -38,10 +39,10 @@ type MemberItemProps = {
 
 function MemberItem ({ name, src }:MemberItemProps) {
   return (
-    <Grid item xs={6} sm={4} md={3} lg={2}>
+    <Grid item xs={6} sm={4} md={3}>
       <Stack spacing={1} sx={{ alignItems:'center' }}>
         <img src={src} style={{ width:'100%' }}/>
-        <Typography sx={{ color:blueGrey[900], textAlign:'center' }} variant='body2'>{name}</Typography>
+        <Typography sx={{ color:blueGrey[900], textAlign:'center', fontWeight:'bold' }} variant='subtitle2'>{name}</Typography>
       </Stack>
     </Grid>
   )
