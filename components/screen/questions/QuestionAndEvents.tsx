@@ -3,13 +3,13 @@ import React from 'react'
 
 // MUI
 import { blueGrey } from '@mui/material/colors';
-import { Accordion, AccordionDetails, AccordionSummary, Grid, Stack, Typography } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Stack, Typography } from '@mui/material';
 
 // Icons
-import { ExpandMore } from '@mui/icons-material'
+import { ExpandMore } from '@mui/icons-material';
 
 // Containers
-import PaddingContainer from '../../containers/PaddingContainer'
+import PaddingContainer from '../../containers/PaddingContainer';
 
 export default function QuestionAndEvents() {
   return (
@@ -18,13 +18,13 @@ export default function QuestionAndEvents() {
         <Grid item lg={4} sx={{ width:'100%'}}>
           <Typography variant='h5' mb={2}>Eventos generales</Typography>
           <Stack rowGap={2}>
-            {expansionPanels.map((props) => <EventAccordion {...props}/>)}
+            {expansionPanels.map((props, key) => <EventAccordion {...props} key={key}/>)}
           </Stack>
         </Grid>
         <Grid item lg={8}>
           <Typography variant='h5' mb={2}>Preguntas frecuentes</Typography>
           <Stack rowGap={2}>
-            {expansionQuestions.map((props) => <QuestionAccordion {...props}/>)}
+            {expansionQuestions.map((props, key) => <QuestionAccordion {...props} key={key}/>)}
           </Stack>
         </Grid>
       </Grid>

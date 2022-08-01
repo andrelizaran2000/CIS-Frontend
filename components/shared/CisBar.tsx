@@ -41,8 +41,8 @@ export default function CisBar() {
         >
           <DialogTitle>Menú</DialogTitle>
           <List sx={{ pt: 0, pl:1 }}>
-            {tabs.map(({ title, to }) => (
-              <ListItem button onClick={() => { Router.push(to); setIsDialogOpen(false); }}>
+            {tabs.map(({ title, to }, key) => (
+              <ListItem button onClick={() => { Router.push(to); setIsDialogOpen(false); }} key={key}>
                 <ListItemText primary={title} />
               </ListItem>
             ))}

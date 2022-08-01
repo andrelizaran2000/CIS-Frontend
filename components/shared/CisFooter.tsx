@@ -20,7 +20,7 @@ export default function CisFooter() {
         <Stack direction='row' columnGap={{ xs:0, md:4 }} sx={{ display: { xs:'none', md:'block' }}}>
           {iconButtons.map(({ title, icon, to }, index) => (
             <Button sx={{ textTransform:'initial' }} key={index}>
-              <a href={to} target="_blank" style={{ textDecoration:'none' }}>
+              <a href={to} target="_blank" style={{ textDecoration:'none' }} rel="noreferrer">
                 <Stack direction='row' columnGap={1}>
                   { icon === 'facebook'  && <Facebook sx={{ color:'white' }}/> }
                   { icon === 'instagram' && <Instagram sx={{ color:'white' }}/> }
