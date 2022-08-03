@@ -5,10 +5,24 @@ import React, { useState } from 'react';
 // MUI
 import { Theme } from '@mui/system';
 import { blue } from '@mui/material/colors';
-import { Box, Button, Grid, IconButton, Stack, SxProps,Dialog, DialogTitle, List, ListItem, ListItemText } from '@mui/material';
+import { 
+  Box, 
+  Button, 
+  Grid, 
+  IconButton, 
+  Stack, 
+  SxProps,
+  Dialog, 
+  DialogTitle, 
+  List, 
+  ListItem, 
+  ListItemText, 
+  Typography 
+} from '@mui/material';
 
 // Icons
 import MenuIcon from '@mui/icons-material/Menu';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 // Images
 import { images } from '../../utils/sources';
@@ -41,7 +55,7 @@ export default function CisBar() {
         >
           <DialogTitle>Menú</DialogTitle>
           <List sx={{ pt: 0, pl:1 }}>
-            {tabs.map(({ title, to }, key) => (
+            {tabsXsScreen.map(({ title, to }, key) => (
               <ListItem button onClick={() => { Router.push(to); setIsDialogOpen(false); }} key={key}>
                 <ListItemText primary={title} />
               </ListItem>
@@ -54,21 +68,19 @@ export default function CisBar() {
 }
 
 const stackContainer:SxProps<Theme> = {
-  justifyContent:{ xs:'space-between', md:'center' }
+  justifyContent:{ xs:'space-between' },
+  alignItems:'center'
 }
-
-const logoImage = (
-  <img 
-    src={images.logo}
-    style={{ width:160 }}
-  />
-)
 
 function FirstBarRow ({ setIsDialogOpen }:any) {
   return (
     <>
       <Stack direction='row' sx={stackContainer}>
-        {logoImage}
+        <img src={images.logo} style={{ width:160 }}/>
+        <Button sx={{ display:{ xs:'none', md:'flex' }, flexDirection:'column' }} onClick={() => Router.push('/about-us')}>
+          <QuestionMarkIcon sx={{ color:'white' }}/>
+          <Typography color='white' variant='caption' mt={1}>¿Quiénes somos?</Typography>
+        </Button>
         <IconButton sx={{ display:{ xs:'block', md:'none' }}} onClick={() => setIsDialogOpen(true)}>
           <MenuIcon sx={{ color:'white' }}/>
         </IconButton>
@@ -78,20 +90,15 @@ function FirstBarRow ({ setIsDialogOpen }:any) {
 }
 
 function SecondBarRow () {
-
-  const handleClick = (to:string) => {
-    Router.push(to)
-  };
-
   return (
     <Grid container sx={{ display:{ xs:'none', md:'flex' }}}>
-      {tabs.map(({ title, to }, index) => (
+      {tabsMd.map(({ title, to }, index) => (
         <Grid item md={2} key={index}>
           <div>
             <Button 
               variant='text' 
               sx={{ color:'white', width:'100%', paddingY:1 }} 
-              onClick={() => handleClick(to)} 
+              onClick={() => Router.push(to)} 
               id={`basic-button-${index}`}
             >{title}</Button>
           </div>
@@ -106,7 +113,17 @@ type TabsType = {
   to:string
 }
 
-const tabs:TabsType[] = [
+const tabsXsScreen:TabsType[] = [
+  { title:'Inicio', to:'/' },
+  { title:'Eventos', to :'/events' },
+  { title:'Registro', to:'/events' },
+  { title:'Historial', to:'/' },
+  { title:'Noticias', to:'/news' },
+  { title:'Contacto', to:'/contact' },
+  { title:'Sobre nosotros', to:'/about-us' },
+]
+
+const tabsMd:TabsType[] = [
   { title:'Inicio', to:'/' },
   { title:'Eventos', to :'/events' },
   { title:'Registro', to:'/events' },
