@@ -1,4 +1,4 @@
-export type NewBody = {
+export type NewData = {
   title:string;
   category:string;
   page:string;
