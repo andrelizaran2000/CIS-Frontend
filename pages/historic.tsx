@@ -4,12 +4,14 @@ import { blueGrey } from '@mui/material/colors';
 import { Button, Grid, Stack, Typography } from '@mui/material';
 
 // Components
+import Main from '../components/screen/historic/Main';
 import GlobalContainer from '../components/containers/GlobalContainer'
 import PaddingContainer from '../components/containers/PaddingContainer';
 
 export default function historic() {
   return (
     <GlobalContainer title='Historial'>
+      <Main/>
       <HistoricContainer eventsList={events2022} title='2022'/>
       <HistoricContainer eventsList={events2021} title='2021'/>
     </GlobalContainer>
