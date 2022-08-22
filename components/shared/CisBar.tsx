@@ -68,7 +68,7 @@ export default function CisBar() {
 }
 
 const stackContainer:SxProps<Theme> = {
-  justifyContent:{ xs:'space-between' },
+  justifyContent:{ xs:'space-between', md:'center' },
   alignItems:'center'
 }
 
@@ -77,10 +77,10 @@ function FirstBarRow ({ setIsDialogOpen }:any) {
     <>
       <Stack direction='row' sx={stackContainer}>
         <img src={images.logo} style={{ width:160 }}/>
-        <Button sx={{ display:{ xs:'none', md:'flex' }, flexDirection:'column' }} onClick={() => Router.push('/about-us')}>
+        {/* <Button sx={{ display:{ xs:'none', md:'flex' }, flexDirection:'column' }} onClick={() => Router.push('/about-us')}>
           <QuestionMarkIcon sx={{ color:'white' }}/>
           <Typography color='white' variant='caption' mt={1}>¿Quiénes somos?</Typography>
-        </Button>
+        </Button> */}
         <IconButton sx={{ display:{ xs:'block', md:'none' }}} onClick={() => setIsDialogOpen(true)}>
           <MenuIcon sx={{ color:'white' }}/>
         </IconButton>
@@ -116,18 +116,17 @@ type TabsType = {
 const tabsXsScreen:TabsType[] = [
   { title:'Inicio', to:'/' },
   { title:'Eventos', to :'/events' },
-  { title:'Registro', to:'/events' },
-  { title:'Historial', to:'/' },
+  { title:'Historial', to:'/historic' },
   { title:'Noticias', to:'/news' },
   { title:'Contacto', to:'/contact' },
-  { title:'Sobre nosotros', to:'/about-us' },
+  { title:'Sobre nosotros', to:'/about-us' }
 ]
 
 const tabsMd:TabsType[] = [
   { title:'Inicio', to:'/' },
   { title:'Eventos', to :'/events' },
-  { title:'Registro', to:'/events' },
-  { title:'Historial', to:'/' },
+  { title:'Historial', to:'/historic' },
   { title:'Noticias', to:'/news' },
   { title:'Contacto', to:'/contact' },
+  { title:'Sobre nosotros', to:'/about-us' }
 ]
