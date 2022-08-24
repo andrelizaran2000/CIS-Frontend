@@ -1,16 +1,15 @@
 // Modules
 import React from 'react'
 
-// MUI
-import { blueGrey } from '@mui/material/colors'
-import { Grid, Stack, SxProps, Theme, Typography } from '@mui/material'
+// Modules
+import { blueGrey } from '@mui/material/colors';
+import { Grid, Stack, SxProps, Theme, Typography } from '@mui/material';
 
 // Containers
-import PaddingContainer from '../../containers/PaddingContainer'
+import PaddingContainer from '../../containers/PaddingContainer';
 
 // Hooks
-import useTraduction from '../../../hooks/useTraductions'
-import { Box } from '@mui/system'
+import useTraduction from '../../../hooks/useTraductions';
 
 export const titleStyle:SxProps<Theme> = {
   textDecoration:'underline', 

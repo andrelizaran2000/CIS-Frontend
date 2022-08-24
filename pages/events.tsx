@@ -1,7 +1,16 @@
 // Modules
+import Router from 'next/router';
 import { grey } from '@mui/material/colors';
 import React, { useEffect, useState } from 'react';
-import { Button, Card, CardContent, CardMedia, Grid, Stack, Typography } from '@mui/material';
+import { 
+  Button, 
+  Card, 
+  CardContent, 
+  CardMedia, 
+  Grid, 
+  Stack, 
+  Typography 
+} from '@mui/material';
 
 // Containers
 import LoadingScreen from '../components/shared/LoadingScreen';
@@ -21,8 +30,7 @@ export default function events() {
   const [ eventData, setEventData ] = useState<EventDataRequest | null>(null);
 
   useEffect(() => {
-    console.log(data)
-    // if (data !== undefined) setEventData(data.data);
+    if (data !== undefined) setEventData(data.data);
   }, [data]);
 
   if (!isLoading && eventData !== null) {
@@ -51,7 +59,7 @@ export default function events() {
                   <CardContent sx={{ alignItems:'center', display:'flex', flexDirection:'column' }}>
                     <Typography gutterBottom variant="h5" component="div">{name}</Typography>
                     <Typography variant="body2" color="text.secondary" mb={2}>{description}</Typography>
-                    <Button variant='contained'>Ver</Button>
+                    <Button variant='contained' onClick={() => Router.push(`/subevents/${id}`)}>Ver</Button>
                   </CardContent>
                 </Card>
               </Grid>

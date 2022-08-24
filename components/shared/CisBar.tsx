@@ -22,7 +22,6 @@ import {
 
 // Icons
 import MenuIcon from '@mui/icons-material/Menu';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 // Images
 import { images } from '../../utils/sources';
@@ -76,11 +75,7 @@ function FirstBarRow ({ setIsDialogOpen }:any) {
   return (
     <>
       <Stack direction='row' sx={stackContainer}>
-        <img src={images.logo} style={{ width:160 }}/>
-        {/* <Button sx={{ display:{ xs:'none', md:'flex' }, flexDirection:'column' }} onClick={() => Router.push('/about-us')}>
-          <QuestionMarkIcon sx={{ color:'white' }}/>
-          <Typography color='white' variant='caption' mt={1}>¿Quiénes somos?</Typography>
-        </Button> */}
+        <img src='/assets/cis-logo.png' style={{ width:160 }}/>
         <IconButton sx={{ display:{ xs:'block', md:'none' }}} onClick={() => setIsDialogOpen(true)}>
           <MenuIcon sx={{ color:'white' }}/>
         </IconButton>

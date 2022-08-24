@@ -47,7 +47,7 @@ function HistoricContainer ({ eventsList, title }:HistoricContainer) {
 }
 
 // Styles
-const titleStyle = {
+export const titleStyle = {
   paddingLeft:10, 
   backgroundColor:blueGrey[900], 
   color:'white', 

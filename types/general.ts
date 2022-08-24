@@ -31,3 +31,28 @@ export type SubeventRequest = {
   hasRegistration:string;
   flyer:string;
 }
+
+export type SubeventData = {
+  description:string;
+  endDate:string;
+  event:number;
+  flyer:string;
+  hasRegistration:boolean;
+  id:number;
+  initDate:string;
+  isFull:boolean;
+  limitAssistants:number;
+  name:string;
+  numAssistants:string;
+  speakers: Speakers[];
+}
+
+type Speakers = {
+  id:number;
+  coverPhoto:string;
+  description:string;
+  firstName:string;
+  lastName:string;
+  profilePhoto:string;
+  title:string;
+}
