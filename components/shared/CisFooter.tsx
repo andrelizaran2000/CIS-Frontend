@@ -36,7 +36,7 @@ export default function CisFooter() {
 
 export const iconButtons = [
   { title:'Facebook',  to:'https://www.facebook.com/CISITVER' },
-  { title:'Instagram', to:'https://www.youtube.com/channel/UCXRR-JFPrMfxV0vgzVusT0g' },
+  { title:'Instagram', to:'https://www.instagram.com/cis.itver/' },
   { title:'WhatsApp',  to:'https://api.whatsapp.com/send?phone=5212299063184' },
-  { title:'Youtube',   to:' https://www.instagram.com/cis.itver/' },
+  { title:'Youtube',   to:'https://www.youtube.com/channel/UCXRR-JFPrMfxV0vgzVusT0g' },
 ]

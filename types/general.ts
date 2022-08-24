@@ -8,3 +8,26 @@ export type NewData = {
   coverPhoto:string;
   link:string;
 }
+
+export type EventDataRequest = {
+  id:number;
+  title:string;
+  description:string;
+  initDate:string;
+  endDate:string;
+  hasRegistration:boolean;
+  flyer1:string;
+  flyer2:string;
+  subevents:SubeventRequest[];
+}
+
+export type SubeventRequest = {
+  id:number;
+  event:number;
+  name:string;
+  description:string;
+  initDate:string;
+  endDate:string;
+  hasRegistration:string;
+  flyer:string;
+}

@@ -1,8 +1,8 @@
 // Modules
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 // Api
-import { getNewsApi } from '../api/general';
+import { getEventsApi, getNewsApi, getSubeventInformationApi } from '../api/general';
 
 export default function useAllRequests () {
 
@@ -10,8 +10,18 @@ export default function useAllRequests () {
     return useMutation (getNewsApi);
   }
 
+  function useGetEventsQuery () {
+    return useQuery(['get-events'], getEventsApi);
+  }
+
+  function useGetSubeventInformationMutation () {
+    return useMutation(getSubeventInformationApi);
+  }
+
   return {
-    useGetNewsMutation
+    useGetNewsMutation,
+    useGetEventsQuery,
+    useGetSubeventInformationMutation
   }
   
 }
