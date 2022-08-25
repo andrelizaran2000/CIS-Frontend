@@ -5,6 +5,7 @@ import { axiosInstance } from "../utils/axiosInstance";
 import { 
   EventDataRequest, 
   NewData, 
+  RecommendationData, 
   SubeventData 
 } from "../types/general";
 
@@ -18,4 +19,8 @@ export function getEventsApi () {
 
 export function getSubeventInformationApi (subeventId:number) {
   return axiosInstance.get<SubeventData>(`/api/subevent.php?id=${subeventId}`);
+}
+
+export function submitRecommendationApi (data:RecommendationData) {
+  return axiosInstance.post('/api/', data);
 }

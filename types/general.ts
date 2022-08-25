@@ -56,3 +56,10 @@ type Speakers = {
   profilePhoto:string;
   title:string;
 }
+
+export type RecommendationData = {
+  name:string;
+  email:string;
+  asunto:string;
+  mensaje:string;
+}
