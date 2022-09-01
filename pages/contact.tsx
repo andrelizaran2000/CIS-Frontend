@@ -10,35 +10,43 @@ import PaddingContainer from '../components/containers/PaddingContainer';
 // Consts
 import { iconButtons } from '../components/shared/CisFooter';
 
-// Icons
-import { Facebook, Instagram, WhatsApp, YouTube } from '@mui/icons-material/';
+// Hooks
 import useAllRequests from '../queries/useAllRequests';
 
-const initialState = {
-  name:'',
+// Icons
+import { Facebook, Instagram, WhatsApp, YouTube } from '@mui/icons-material/';
+
+// Types
+import { RecommendationData } from '../types/general';
+
+const initialState:RecommendationData = {
+  fullName:'',
   email:'',
-  asunto:'',
-  mensaje:''
+  subject:'',
+  message:''
 }
 
 export default function contact() {
 
   const [ formValues, setFormValues ] = useState(initialState);
   const { useSubmitRecommendationMutation } = useAllRequests();
-  const { mutate } = useSubmitRecommendationMutation();
-
-  const { asunto, email, mensaje, name } = formValues;
+  const { mutate, isLoading } = useSubmitRecommendationMutation(cleanForm);
+  const { subject, email, message, fullName } = formValues;
 
   function handleForm (name:string, value:string) {
     setFormValues({ ...formValues, [name]:value });
   }
 
   function validateForm () {
-    if (!asunto || !email || !mensaje || !name) {
+    if (!subject || !email || !message || !fullName) {
       alert('Es necesario ingresar todos los datos del formulario');
       return false;
     }
     else return true;
+  }
+
+  function cleanForm () {
+    setFormValues(initialState)
   }
 
   function sendFormValues () {
@@ -66,7 +74,9 @@ export default function contact() {
                     variant='filled'
                     type='text'
                     onChange={(e) => handleForm(e.target.name, e.target.value)}
-                    name='name'
+                    name='fullName'
+                    value={fullName}
+                    disabled={isLoading}
                   />
                   <TextField
                     label='Email'
@@ -74,13 +84,17 @@ export default function contact() {
                     type='email'
                     onChange={(e) => handleForm(e.target.name, e.target.value)}
                     name='email'
+                    value={email}
+                    disabled={isLoading}
                   />
                   <TextField
                     label='Asunto'
                     variant='filled'
                     type='text'
                     onChange={(e) => handleForm(e.target.name, e.target.value)}
-                    name='asunto'
+                    name='subject'
+                    value={subject}
+                    disabled={isLoading}
                   />
                   <TextField
                     label='Mensaje o comentario'
@@ -88,9 +102,15 @@ export default function contact() {
                     type='text'
                     rows={4}
                     onChange={(e) => handleForm(e.target.name, e.target.value)}
-                    name='mensaje'
+                    name='message'
+                    value={message}
+                    disabled={isLoading}
                   />
-                  <Button variant='contained' type='submit'>Mandar</Button>
+                  <Button 
+                    variant='contained' 
+                    type='submit'
+                    disabled={isLoading}
+                  >Mandar</Button>
                 </Stack>
               </form>
             </Paper>

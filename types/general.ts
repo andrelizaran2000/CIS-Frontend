@@ -58,8 +58,8 @@ type Speakers = {
 }
 
 export type RecommendationData = {
-  name:string;
+  fullName:string;
   email:string;
-  asunto:string;
-  mensaje:string;
+  subject:string;
+  message:string;
 }

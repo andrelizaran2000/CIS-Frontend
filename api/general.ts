@@ -22,5 +22,5 @@ export function getSubeventInformationApi (subeventId:number) {
 }
 
 export function submitRecommendationApi (data:RecommendationData) {
-  return axiosInstance.post('/api/', data);
+  return axiosInstance.post('/api/contact-us.php', data);
 }

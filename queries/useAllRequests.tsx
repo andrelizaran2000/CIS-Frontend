@@ -23,8 +23,16 @@ export default function useAllRequests () {
     return useMutation(getSubeventInformationApi);
   }
 
-  function useSubmitRecommendationMutation () {
-    return useMutation(submitRecommendationApi);
+  function useSubmitRecommendationMutation (onSuccessCallback: () => void) {
+    return useMutation(submitRecommendationApi, {
+      onSuccess: () => {
+        alert("Se ha mandado tu correo correctamente");
+        onSuccessCallback();
+      },
+      onError: () => {
+        alert("Hubo un error enviando tu correo, inténtalo más tarde");
+      }
+    });
   }
 
   return {
