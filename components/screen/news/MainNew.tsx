@@ -3,7 +3,7 @@ import React from 'react';
 
 // MUI
 import { blueGrey } from '@mui/material/colors';
-import { Button, Grid, Link, Stack, Typography } from '@mui/material';
+import { Button, Grid, Stack, Typography } from '@mui/material';
 
 // Container
 import PaddingContainer from '../../containers/PaddingContainer';

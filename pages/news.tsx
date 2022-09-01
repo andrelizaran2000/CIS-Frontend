@@ -19,7 +19,7 @@ export default function news () {
 
   const { useGetNewsMutation } = useAllRequests();
   const { mutate, data, isLoading } = useGetNewsMutation();
-  const [ currentTab, setCurrentTab ] = useState(0);
+  const [ currentTab ] = useState(0);
   const [ news, setNews ] = useState<NewData[]>([]);
   const [ firstNew, setFirstNew ] = useState<null | NewData>(null);
 

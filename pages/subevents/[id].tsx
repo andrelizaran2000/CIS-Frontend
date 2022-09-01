@@ -53,8 +53,8 @@ export default function SubeventPage () {
               <Typography sx={{ mb:4 }}>{subeventData.description}</Typography>
               <Typography variant='h6' mb={1}><b>Ponentes</b></Typography>
               <Stack rowGap={2} mb={2}>
-                {subeventData.speakers.map(({ profilePhoto, firstName, lastName, title }) => (
-                  <Stack sx={speakerContainer}>
+                {subeventData.speakers.map(({ profilePhoto, firstName, lastName, title }, key) => (
+                  <Stack sx={speakerContainer} key={key}>
                     <Stack>
                       <Typography variant='caption'>{title}</Typography>
                       <Typography>{`${lastName} ${firstName}`}</Typography>

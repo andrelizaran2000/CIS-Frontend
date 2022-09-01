@@ -16,15 +16,11 @@ import {
   DialogTitle, 
   List, 
   ListItem, 
-  ListItemText, 
-  Typography 
+  ListItemText
 } from '@mui/material';
 
 // Icons
 import MenuIcon from '@mui/icons-material/Menu';
-
-// Images
-import { images } from '../../utils/sources';
 
 const container:SxProps<Theme> = {
   width:'100%', 

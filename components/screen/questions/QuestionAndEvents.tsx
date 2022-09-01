@@ -44,7 +44,7 @@ type EventAccordionProps = {
   events:number[]
 }
 
-function EventAccordion ({ title, events }:EventAccordionProps) {
+function EventAccordion ({ title }:EventAccordionProps) {
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMore/>}>

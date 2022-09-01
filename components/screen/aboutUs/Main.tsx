@@ -2,14 +2,13 @@
 import React from 'react'
 
 // MUI
-import { blueGrey } from '@mui/material/colors'
-import { Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material';
 
 // Traductions
-import useTraduction from '../../../hooks/useTraductions'
+import useTraduction from '../../../hooks/useTraductions';
 
 // Styles
-import { titleStyle } from './AboutUs'
+import { titleStyle } from './AboutUs';
 
 const containerStyle = {
   padding:4, 

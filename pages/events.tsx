@@ -48,8 +48,8 @@ export default function events() {
           </Stack>
           <Typography sx={{ color:grey[600], textAlign:'center', marginTop:4, marginBottom:4 }} variant='h6'>CALENDARIO DE ACTIVIDADES</Typography> 
           <Grid container spacing={4}>
-            {eventData?.subevents.map(({ flyer, name, description, id }) => (
-              <Grid item sx={gridSubeventStyle} xs={12} sm={6} md={4} xl={3}>
+            {eventData?.subevents.map(({ flyer, name, description, id }, key) => (
+              <Grid item sx={gridSubeventStyle} xs={12} sm={6} md={4} xl={3} key={key}>
                 <Card sx={{ maxWidth: 345 }}>
                   <CardMedia
                     component="img"

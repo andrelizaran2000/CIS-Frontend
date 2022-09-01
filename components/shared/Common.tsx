@@ -8,7 +8,7 @@ export const WhiteField = styled((props: TextFieldProps) => (
     InputProps={{ disableUnderline: true } as Partial<OutlinedInputProps>}
     {...props}
   />
-))(({ theme }:any) => ({
+))(() => ({
   '& .MuiFilledInput-root': {
     borderRadius: 4,
     backgroundColor: '#FFF',
