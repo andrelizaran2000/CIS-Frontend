@@ -38,14 +38,14 @@ export default function events() {
       <GlobalContainer title='Eventos'>
         <PaddingContainer>
           <Typography sx={{ color:grey[600], textAlign:'center', marginBottom:2 }} variant='h6'>FLYERS DE EVENTO</Typography> 
-          <Stack flexDirection='row' columnGap={4}>
-            <Stack sx={{ width:'50%' }}>
-              <img src={eventData?.flyer1} style={{ width:'100%' }}/>
-            </Stack>
-            <Stack sx={{ width:'50%' }}>
-              <img src={eventData?.flyer2} style={{ width:'100%' }}/>
-            </Stack>
-          </Stack>
+          <Grid container spacing={4}>
+            <Grid item sx={{ display:'flex', flexDirection:'column' }} xs={12} sm={6}>
+              <img src={eventData?.flyer1}/>
+            </Grid>
+            <Grid item sx={{ display:'flex', flexDirection:'column' }} xs={12} sm={6}>
+              <img src={eventData?.flyer2}/>
+            </Grid>
+          </Grid>
           <Typography sx={{ color:grey[600], textAlign:'center', marginTop:4, marginBottom:4 }} variant='h6'>CALENDARIO DE ACTIVIDADES</Typography> 
           <Grid container spacing={4}>
             {eventData?.subevents.map(({ flyer, name, description, id }, key) => (

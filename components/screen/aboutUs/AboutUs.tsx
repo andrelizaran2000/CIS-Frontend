@@ -69,7 +69,7 @@ const membersList:MemberItemProps[] = [
     src:'/assets/about-us/member1.png'
   },
   { 
-    name:'Erick Montalvo Cruz', 
+    name:'Eric Montalvo Cruz', 
     src:'/assets/about-us/member7.png'
   },
   { 

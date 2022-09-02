@@ -52,11 +52,11 @@ export default function Register () {
   return (
     <GlobalContainer title='Registrarse'>
       <PaddingContainer backgroundColor={grey[200]}>
-        <Grid container spacing={4}>
-          <Grid item sm={4} sx={{ display:{ xs:'none', sm:'flex' }, flexDirection:'column', justifyContent:'center' }}>
+        <Grid container spacing={{ xs:4, sm:20 }}>
+          <Grid item sm={5} lg={4} sx={{ display:{ xs:'none', sm:'flex' }, flexDirection:'column', justifyContent:'center' }}>
             <img src='/assets/register/main.png'/>
           </Grid>
-          <Grid item xs={12} sm={8} sx={{ color:blueGrey[900], flexDirection:'column' }}>
+          <Grid item xs={12} sm={7} lg={8} sx={{ color:blueGrey[900], display:'flex', flexDirection:'column', justifyContent:'center' }}>
             <form onSubmit={(e) => { e.preventDefault(); submitRegister() }} style={{ display:'flex', flexDirection:'column' }}>
               <Paper sx={{ display:'flex', flexDirection:'column', padding:4, alignItemms:'center', rowGap:2 }}>
                 <Typography variant='h5' sx={{ textAlign:'center', color:blueGrey[900] }}>
