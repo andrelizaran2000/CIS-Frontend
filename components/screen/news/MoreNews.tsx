@@ -26,9 +26,12 @@ import { NewData } from '../../../types/general';
 
 type Props = {
   news:NewData[];
+  isButtonEnabled:boolean;
+  updateTab:() => void;
+  isLoading:boolean;
 }
 
-export default function MoreNews ({ news }:Props) {
+export default function MoreNews ({ news, isButtonEnabled, updateTab, isLoading }:Props) {
   const traduce = useTraduction('news')
   return (
     <PaddingContainer>
@@ -59,7 +62,12 @@ export default function MoreNews ({ news }:Props) {
           </Grid>  
         ))}
       </Grid>
-      <Button sx={{ alignSelf:'center' }} variant='contained'>Conocer más</Button> 
+      <Button 
+        sx={{ alignSelf:'center' }}
+        variant='contained'
+        disabled={!isButtonEnabled || isLoading}
+        onClick={updateTab}
+      >Conocer más</Button> 
     </PaddingContainer>
   )
 }

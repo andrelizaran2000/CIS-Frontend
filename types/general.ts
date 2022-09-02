@@ -63,3 +63,12 @@ export type RecommendationData = {
   subject:string;
   message:string;
 }
+
+export type RegisterSubeventData = {
+  school:number;
+  career:number;
+  email:string;
+  name:string;
+  controlNumber:string;
+  id:number;
+}

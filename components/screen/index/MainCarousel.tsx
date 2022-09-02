@@ -8,6 +8,7 @@ import { Button, Stack, Typography } from '@mui/material';
 
 // Hooks
 import useTraduction from '../../../hooks/useTraductions';
+import { useRouter } from 'next/router';
 
 export default function MainCarousel() {
   return (
@@ -38,7 +39,8 @@ const whiteTextStyle = {
 }
 
 function FirstImage () {
-  const traduce = useTraduction('index')
+  const traduce = useTraduction('index');
+  const router = useRouter();
   return (
     <Stack sx={firstImageStyle}>
       <Stack sx={{ padding:4, alignItems:'center' }} rowGap={2}>
@@ -53,7 +55,11 @@ function FirstImage () {
             sx={whiteTextStyle}
           >{traduce('carousel.white-text')}</Typography>
         </Stack>
-        <Button variant='contained' size='large'>{traduce('carousel.blue-button')}</Button>
+        <Button 
+          variant='contained' 
+          size='large'
+          onClick={() => router.push('/events')}
+        >{traduce('carousel.blue-button')}</Button>
       </Stack>
     </Stack>
   )

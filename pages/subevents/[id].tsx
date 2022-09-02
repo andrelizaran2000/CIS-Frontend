@@ -44,7 +44,7 @@ export default function SubeventPage () {
     return (
       <GlobalContainer title={titlePage}>
         <PaddingContainer>
-          <Grid container spacing={4}>
+          <Grid container spacing={{ xs:4, lg:20 }}>
             <Grid item xs={12} sm={6} sx={{ display:'flex', flexDirection:'column', justifyContent:'center' }}>
               <img src={subeventData.flyer} style={{ borderRadius:5 }}/>
             </Grid>          

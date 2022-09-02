@@ -6,7 +6,8 @@ import {
   getEventsApi, 
   getNewsApi, 
   getSubeventInformationApi, 
-  submitRecommendationApi 
+  submitRecommendationApi, 
+  submitRegisterToSubevent
 } from '../api/general';
 
 export default function useAllRequests () {
@@ -35,11 +36,24 @@ export default function useAllRequests () {
     });
   }
 
+  function useSubmitRegisterSubeventMutation (onSuccessCallback: () => void) {
+    return useMutation(submitRegisterToSubevent, {
+      onSuccess: () => {
+        alert("Te has registrado al evento, te llegará más información al correo entregado")
+        onSuccessCallback()
+      },
+      onError: () => {
+        alert("Hubo un error registrándote al evento, inténtalo más tarde");
+      }
+    })
+  }
+
   return {
     useGetNewsMutation,
     useGetEventsQuery,
     useGetSubeventInformationMutation,
-    useSubmitRecommendationMutation
+    useSubmitRecommendationMutation,
+    useSubmitRegisterSubeventMutation
   }
   
 }

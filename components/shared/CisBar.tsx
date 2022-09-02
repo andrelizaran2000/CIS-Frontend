@@ -1,5 +1,5 @@
 // Modules
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 // MUI
@@ -68,10 +68,15 @@ const stackContainer:SxProps<Theme> = {
 }
 
 function FirstBarRow ({ setIsDialogOpen }:any) {
+  const router = useRouter();
   return (
     <>
       <Stack direction='row' sx={stackContainer}>
-        <img src='/assets/cis-logo.png' style={{ width:160 }}/>
+        <img 
+          src='/assets/cis-logo.png' 
+          style={{ width:160, cursor:'pointer' }}
+          onClick={() => router.push('/')}
+        />
         <IconButton sx={{ display:{ xs:'block', md:'none' }}} onClick={() => setIsDialogOpen(true)}>
           <MenuIcon sx={{ color:'white' }}/>
         </IconButton>

@@ -19,9 +19,10 @@ export default function news () {
 
   const { useGetNewsMutation } = useAllRequests();
   const { mutate, data, isLoading } = useGetNewsMutation();
-  const [ currentTab ] = useState(0);
+  const [ currentTab, setCurrentTab ] = useState(0);
   const [ news, setNews ] = useState<NewData[]>([]);
   const [ firstNew, setFirstNew ] = useState<null | NewData>(null);
+  const [ isButtonEnabled, setIsButtonEnabled ] = useState(false)
 
   useEffect(() => {
     mutate(currentTab);
@@ -31,22 +32,30 @@ export default function news () {
     setNewsData(); 
   }, [data]);
 
+  function updateTab () {
+    setCurrentTab(currentTab + 1)
+  }
+
   function setNewsData () {
     if (data === undefined) return;
-    const { news } = data.data;
-    if (news.length === 0) return;
-    setFirstNew(news[0]);
-    if (news.length < 1) return;
-    const newsWithoutFirst = news;
-    newsWithoutFirst.shift();
-    setNews(newsWithoutFirst);
+    const { news:newNews, areThereMoreNews } = data.data;
+    if (newNews.length === 0) return;
+    if (news.length === 0) {
+      setFirstNew(newNews[0]);
+      const newsWithoutFirst = newNews;
+      newsWithoutFirst.shift();
+      setNews(newsWithoutFirst);
+    } else {
+      setNews([ ...news, ...newNews ]);
+    }
+    setIsButtonEnabled(areThereMoreNews)
   }
 
   return (
     <GlobalContainer title='Noticias'>
       { (news.length > 0 && firstNew !== null) && <MainNew {...firstNew}/>}
-      { (news.length > 0) && <MoreNews news={news}/> }
-      { (isLoading || data === undefined) && <LoadingScreen/> }
+      { (news.length > 0) && <MoreNews news={news} isButtonEnabled={isButtonEnabled} updateTab={updateTab} isLoading={isLoading}/> }
+      { (isLoading && data === undefined) && <LoadingScreen/> }
     </GlobalContainer>
   )
 }

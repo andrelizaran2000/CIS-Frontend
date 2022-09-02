@@ -1,13 +1,14 @@
 // Modules
 import React from 'react'
-import { blueGrey } from '@mui/material/colors'
-import { Button, Grid, Stack, Typography } from '@mui/material'
+import Router from 'next/router'; 
+import { blueGrey } from '@mui/material/colors';
+import { Button, Grid, Stack, Typography } from '@mui/material';
 
 // Containers
-import PaddingContainer from '../../containers/PaddingContainer'
+import PaddingContainer from '../../containers/PaddingContainer';
 
 // Images
-import { images } from '../../../utils/sources'
+import { images } from '../../../utils/sources';
 
 export default function AboutUs () {
   return (
@@ -26,11 +27,18 @@ export default function AboutUs () {
             md={6} 
             sx={{ display:'flex', alignItems:'center' }}
           >
-            <Stack rowGap={2} sx={{ alignItems:'end', color:'white', textAlign:'right' }}>
+            <Stack 
+              rowGap={2} 
+              sx={{ alignItems:'end', color:'white', textAlign:'right' }}
+            >
               <Typography variant='h6'>
                 Somos una comunidad formada por estudiantes y catedráticos  de la carrera de Ingeniería en Sistemas Computacionales con el objetivo decompartir conocimiento relacionado con Tecnologías de la Información para carreras afines y el público en general
               </Typography>
-              <Button variant='contained' size='large'>Conocer más</Button>
+              <Button 
+                variant='contained' 
+                size='large'
+                onClick={() => Router.push('/about-us')}
+              >Conocer más</Button>
             </Stack>
           </Grid>
         </Grid>

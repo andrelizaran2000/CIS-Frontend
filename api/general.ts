@@ -6,11 +6,12 @@ import {
   EventDataRequest, 
   NewData, 
   RecommendationData, 
+  RegisterSubeventData, 
   SubeventData 
 } from "../types/general";
 
 export function getNewsApi (tab:number) {
-  return axiosInstance.get<{news:NewData[]}>(`/api/news.php?tab=${tab}`)
+  return axiosInstance.get<{news:NewData[], areThereMoreNews:boolean}>(`/api/news.php?tab=${tab}`)
 }
 
 export function getEventsApi () {
@@ -23,4 +24,8 @@ export function getSubeventInformationApi (subeventId:number) {
 
 export function submitRecommendationApi (data:RecommendationData) {
   return axiosInstance.post('/api/contact-us.php', data);
+}
+
+export function submitRegisterToSubevent (data:RegisterSubeventData) {
+  return axiosInstance.post(`/api/assistant.php?idSubevent=${data.id}`, data)
 }
