@@ -100,17 +100,18 @@ export default function contact() {
                     label='Mensaje o comentario'
                     variant='filled'
                     type='text'
-                    rows={4}
+                    rows={5}
                     onChange={(e) => handleForm(e.target.name, e.target.value)}
                     name='message'
                     value={message}
                     disabled={isLoading}
+                    multiline
                   />
                   <Button 
                     variant='contained' 
                     type='submit'
                     disabled={isLoading}
-                  >Mandar</Button>
+                  >Enviar</Button>
                 </Stack>
               </form>
             </Paper>

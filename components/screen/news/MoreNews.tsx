@@ -37,7 +37,7 @@ export default function MoreNews ({ news, isButtonEnabled, updateTab, isLoading 
     <PaddingContainer>
       <Typography sx={{ ...titleStyle, mb:4 }} variant='h4'>{traduce('news.title')}</Typography>
       <Grid container spacing={4} mb={4}>
-        {news.map(({ title, description, coverPhoto, link }, key) => (
+        {news.map(({ title, description, coverPhoto, link, author }, key) => (
           <Grid item xs={12} sm={6} md={4} lg={3} sx={{ borderRadius:2 }} key={key}>
             <Card>
               <CardMedia
@@ -45,17 +45,20 @@ export default function MoreNews ({ news, isButtonEnabled, updateTab, isLoading 
                 height="180"
                 image={coverPhoto}
               />
-              <CardContent sx={{ pb:2 }}>
+              <CardContent sx={{ pb:2, textAlign:'justify' }}>
                 <Typography gutterBottom variant="h6" component="div">
                   {title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" mb={1}>
                   {description}
+                </Typography>
+                <Typography variant="caption" color="text.primary">
+                  Autor: {author}
                 </Typography>
               </CardContent>
               <CardActions>
                 <Button>
-                  <a href={link}>Visitar sitio</a>
+                  <a href={link} target="_blank">Visitar sitio</a>
                 </Button>
               </CardActions>
             </Card>

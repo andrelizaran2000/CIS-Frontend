@@ -63,8 +63,9 @@ export default function CisBar() {
 }
 
 const stackContainer:SxProps<Theme> = {
-  justifyContent:{ xs:'space-between', md:'center' },
-  alignItems:'center'
+  justifyContent:{ xs:'space-between' },
+  alignItems:'center',
+  display:{ xs:'flex', md:'none' }
 }
 
 function FirstBarRow ({ setIsDialogOpen }:any) {
@@ -77,7 +78,7 @@ function FirstBarRow ({ setIsDialogOpen }:any) {
           style={{ width:160, cursor:'pointer' }}
           onClick={() => router.push('/')}
         />
-        <IconButton sx={{ display:{ xs:'block', md:'none' }}} onClick={() => setIsDialogOpen(true)}>
+        <IconButton onClick={() => setIsDialogOpen(true)}>
           <MenuIcon sx={{ color:'white' }}/>
         </IconButton>
       </Stack>
@@ -86,20 +87,34 @@ function FirstBarRow ({ setIsDialogOpen }:any) {
 }
 
 function SecondBarRow () {
+
+  const router = useRouter();
+  
   return (
     <Grid container sx={{ display:{ xs:'none', md:'flex' }}}>
-      {tabsMd.map(({ title, to }, index) => (
-        <Grid item md={2} key={index}>
-          <div>
-            <Button 
-              variant='text' 
-              sx={{ color:'white', width:'100%', paddingY:1 }} 
-              onClick={() => Router.push(to)} 
-              id={`basic-button-${index}`}
-            >{title}</Button>
-          </div>
+      <Grid item md={2}>
+        <img 
+          src='/assets/cis-logo.png' 
+          style={{ width:160, cursor:'pointer' }}
+          onClick={() => router.push('/')}
+        />
+      </Grid>
+      <Grid item md={10}>
+        <Grid container>
+          {tabsMd.map(({ title, to }, index) => (
+            <Grid item md={2} key={index}>
+              <div>
+                <Button 
+                  variant='text' 
+                  sx={{ color:'white', width:'100%', paddingY:1 }} 
+                  onClick={() => Router.push(to)} 
+                  id={`basic-button-${index}`}
+                >{title}</Button>
+              </div>
+            </Grid>
+          ))}
         </Grid>
-      ))}
+      </Grid>
     </Grid>
   )
 }

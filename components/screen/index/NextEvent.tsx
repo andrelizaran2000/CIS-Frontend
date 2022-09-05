@@ -28,6 +28,7 @@ export default function NextEvent () {
       const { subevents } = newData;
       if (subevents.length > 0) setSubeventData(subevents[0]);
     }
+    console.log(data);
   }, [data]);
 
   if (isLoading) return <LoadingScreen/>

@@ -22,11 +22,11 @@ export default function MainNew (newData:NewData) {
           <img src={coverPhoto} style={{ width:'100%' }}/>
         </Grid>
         <Grid item xs={12} md={6} lg={5} xl={6} sx={{ color:'white', alignItems:'center', justifyContent:'center', display:'flex' }}>
-          <Stack rowGap={2}>
+          <Stack rowGap={2} sx={{ textAlign:'justify' }}>
             <Typography variant='h4'>{title}</Typography>
             <Typography>{description}</Typography>
             <Button variant='contained' sx={{ alignSelf:'flex-start' }}>
-              <a href={link} style={{ color:'white' }}>Visitar sitio</a>
+              <a href={link} style={{ color:'white' }} target="_blank">Visitar sitio</a>
             </Button>
           </Stack>
         </Grid>

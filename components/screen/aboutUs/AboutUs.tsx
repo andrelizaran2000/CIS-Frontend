@@ -78,6 +78,23 @@ const membersList:MemberItemProps[] = [
   },
   { 
     name:'Irving Naranjo Paredes', 
-     src:'/assets/about-us/member6.png'
-  }
+    src:'/assets/about-us/member6.png'
+  },
+  { 
+    name:'Yelitza Rosas Jimenez', 
+    src:'/assets/about-us/member6.png'
+  },
+  { 
+    name:'Daniela Castro Reyes', 
+    src:'/assets/about-us/member6.png'
+  },
+  { 
+    name:'Karla Mariana Cordoba Vasquez', 
+    src:'/assets/about-us/member6.png'
+  },
+  { 
+    name:'Ángel Manuel Sandria Pérez', 
+    src:'/assets/about-us/member6.png'
+  },
+
 ]
