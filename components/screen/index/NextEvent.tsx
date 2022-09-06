@@ -23,15 +23,15 @@ export default function NextEvent () {
   const [ subeventData, setSubeventData ] = useState<null | SubeventRequest>(null);
 
   useEffect(() => {
-    if (data !== undefined) {
+    if (data?.data.id !== undefined) {
       const { data:newData } = data;
       const { subevents } = newData;
       if (subevents.length > 0) setSubeventData(subevents[0]);
     }
-    console.log(data);
   }, [data]);
 
-  if (isLoading) return <LoadingScreen/>
+  if (!isLoading && subeventData === null) return <></>
+  if (isLoading) return <LoadingScreen size='small'/>
   else {
     return (
       <PaddingContainer>

@@ -45,7 +45,7 @@ export default function MoreNews ({ news, isButtonEnabled, updateTab, isLoading 
                 height="180"
                 image={coverPhoto}
               />
-              <CardContent sx={{ pb:2, textAlign:'justify' }}>
+              <CardContent sx={{ pb:0, textAlign:'justify' }}>
                 <Typography gutterBottom variant="h6" component="div">
                   {title}
                 </Typography>

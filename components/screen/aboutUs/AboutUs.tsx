@@ -40,7 +40,7 @@ function MemberItem ({ name, src }:MemberItemProps) {
   return (
     <Grid item xs={6} sm={4} md={3}>
       <Stack spacing={1} sx={{ alignItems:'center' }}>
-        <img src={src} style={{ width:'100%' }}/>
+        <img src={src} style={{ width:'100%', borderRadius:50 }}/>
         <Typography sx={{ color:blueGrey[900], textAlign:'center', fontWeight:'bold' }} variant='subtitle2'>{name}</Typography>
       </Stack>
     </Grid>
@@ -82,19 +82,19 @@ const membersList:MemberItemProps[] = [
   },
   { 
     name:'Yelitza Rosas Jimenez', 
-    src:'/assets/about-us/member6.png'
+    src:'/assets/about-us/member9.JPG'
   },
   { 
     name:'Daniela Castro Reyes', 
-    src:'/assets/about-us/member6.png'
+    src:'/assets/about-us/member10.JPG'
   },
   { 
     name:'Karla Mariana Cordoba Vasquez', 
-    src:'/assets/about-us/member6.png'
+    src:'/assets/about-us/member11.JPG'
   },
   { 
     name:'Ángel Manuel Sandria Pérez', 
-    src:'/assets/about-us/member6.png'
+    src:'/assets/about-us/member12.JPG'
   },
 
 ]

@@ -1,16 +1,17 @@
 // Modules
-import Router from 'next/router';
-import { grey } from '@mui/material/colors';
-import React, { useEffect, useState } from 'react';
 import { 
   Button, 
   Card, 
   CardContent, 
   CardMedia, 
   Grid, 
+  Paper, 
   Stack, 
   Typography 
 } from '@mui/material';
+import Router from 'next/router';
+import { grey } from '@mui/material/colors';
+import React, { useEffect, useState } from 'react';
 
 // Containers
 import LoadingScreen from '../components/shared/LoadingScreen';
@@ -20,6 +21,9 @@ import PaddingContainer from '../components/containers/PaddingContainer';
 // Hooks
 import useAllRequests from '../queries/useAllRequests';
 
+// Icons
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+
 // Types
 import { EventDataRequest } from '../types/general';
 
@@ -28,9 +32,11 @@ export default function events() {
   const { useGetEventsQuery } = useAllRequests();
   const { data, isLoading } = useGetEventsQuery();
   const [ eventData, setEventData ] = useState<EventDataRequest | null>(null);
+  const [ isEventAvailable, setIsEventAvailable ] = useState(true);
 
   useEffect(() => {
-    if (data !== undefined) setEventData(data.data);
+    if (data !== undefined && data.data.id !== undefined) setEventData(data.data);
+    else setIsEventAvailable(false) 
   }, [data]);
 
   if (!isLoading && eventData !== null) {
@@ -68,7 +74,32 @@ export default function events() {
         </PaddingContainer>
       </GlobalContainer>
     )
-  } else return (
+  }
+  else if (!isLoading && eventData === null) return <NoEventAvailable/>
+  else if (isLoading) return <LoadingEvent/>
+  else return <></>
+}
+
+function NoEventAvailable () {
+  return (
+    <GlobalContainer title='Eventos'>
+      <PaddingContainer backgroundColor={grey[300]}>
+        <Stack sx={{ paddingY:20 }}>
+          <Paper>
+            <Stack sx={{ padding:3, textAlign:'center', alignItems:'center', rowGap:1 }}>
+              <Typography variant='h6'>No hay eventos disponibles</Typography>
+              <SentimentVeryDissatisfiedIcon fontSize='large' sx={{ color:grey[700] }}/>
+              <Typography>Revisa esta sección más tarde</Typography>
+            </Stack>
+          </Paper>
+        </Stack>
+      </PaddingContainer>
+    </GlobalContainer>
+  )
+}
+
+function LoadingEvent () {
+  return (
     <GlobalContainer title='Eventos'>
       <LoadingScreen/>
     </GlobalContainer>
