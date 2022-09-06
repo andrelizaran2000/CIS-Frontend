@@ -58,7 +58,7 @@ export default function MoreNews ({ news, isButtonEnabled, updateTab, isLoading 
               </CardContent>
               <CardActions>
                 <Button>
-                  <a href={link} target="_blank">Visitar sitio</a>
+                  <a href={link} target="_blank" rel="noopener noreferrer">Visitar sitio</a>
                 </Button>
               </CardActions>
             </Card>

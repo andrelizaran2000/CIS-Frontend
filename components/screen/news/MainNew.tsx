@@ -26,7 +26,7 @@ export default function MainNew (newData:NewData) {
             <Typography variant='h4'>{title}</Typography>
             <Typography>{description}</Typography>
             <Button variant='contained' sx={{ alignSelf:'flex-start' }}>
-              <a href={link} style={{ color:'white' }} target="_blank">Visitar sitio</a>
+              <a href={link} style={{ color:'white' }} target="_blank" rel="noopener noreferrer">Visitar sitio</a>
             </Button>
           </Stack>
         </Grid>

@@ -128,7 +128,7 @@ export default function contact() {
         >
           {iconButtons.map(({ title, to }, key) => (
             <Button key={key} sx={{ textTransform:'initial' }}>
-              <a href={to} target="_blank" style={{ textDecoration:'none', color:'white' }} rel="noreferrer">
+              <a href={to} target="_blank" style={{ textDecoration:'none', color:'white' }} rel="noopener noreferrer">
                 {title === 'Facebook' && <Facebook fontSize='large'/>}
                 {title === 'Instagram' && <Instagram fontSize='large'/>}
                 {title === 'WhatsApp' && <WhatsApp fontSize='large'/>}
