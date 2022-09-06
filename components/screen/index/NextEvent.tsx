@@ -2,7 +2,7 @@
 import Router from 'next/router';
 import { blueGrey } from '@mui/material/colors';
 import React, { useEffect, useState } from 'react';
-import { Button, Grid, Stack, Typography } from '@mui/material';
+import { Button, Chip, Grid, Stack, Typography } from '@mui/material';
 
 // Containers
 import PaddingContainer from '../../containers/PaddingContainer';
@@ -16,17 +16,38 @@ import useAllRequests from '../../../queries/useAllRequests';
 // Types
 import { SubeventRequest } from '../../../types/general';
 
+// Icons
+import StadiumIcon from '@mui/icons-material/Stadium';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
 export default function NextEvent () {
 
   const { useGetEventsQuery } = useAllRequests();
   const { data, isLoading } = useGetEventsQuery();
   const [ subeventData, setSubeventData ] = useState<null | SubeventRequest>(null);
+  const [ eventType, setEventType ] = useState('');
 
   useEffect(() => {
     if (data?.data.id !== undefined) {
       const { data:newData } = data;
       const { subevents } = newData;
-      if (subevents.length > 0) setSubeventData(subevents[0]);
+      if (subevents.length > 0) { 
+        setSubeventData(subevents[0]);
+        switch (subevents[0].event) {
+          case 1:
+            setEventType('Taller')
+            break;
+          case 2:
+            setEventType('Curso')
+            break;
+          case 3:
+            setEventType('Conferencia')
+            break;
+          case 4:
+            setEventType('Práctica')
+            break;
+        }
+      }
     }
   }, [data]);
 
@@ -42,6 +63,14 @@ export default function NextEvent () {
               <b>{subeventData?.name}</b>
             </Typography>
               <Typography variant='h6' sx={{ color:blueGrey[900] }}>{subeventData?.description}</Typography>
+              <Chip 
+                icon={<StadiumIcon />} 
+                label={eventType} 
+              />
+              <Chip 
+                icon={<CalendarMonthIcon />} 
+                label={subeventData?.initDate} 
+              />
               <Button 
                 variant='contained' 
                 size='large' 

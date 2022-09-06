@@ -4,6 +4,7 @@ import {
   Card, 
   CardContent, 
   CardMedia, 
+  Chip, 
   Grid, 
   Paper, 
   Stack, 
@@ -22,10 +23,12 @@ import PaddingContainer from '../components/containers/PaddingContainer';
 import useAllRequests from '../queries/useAllRequests';
 
 // Icons
+import StadiumIcon from '@mui/icons-material/Stadium';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 // Types
-import { EventDataRequest } from '../types/general';
+import { EventDataRequest, SubeventRequest } from '../types/general';
 
 export default function events() {
 
@@ -54,22 +57,7 @@ export default function events() {
           </Grid>
           <Typography sx={{ color:grey[600], textAlign:'center', marginTop:4, marginBottom:4 }} variant='h6'>CALENDARIO DE ACTIVIDADES</Typography> 
           <Grid container spacing={4}>
-            {eventData?.subevents.map(({ flyer, name, description, id }, key) => (
-              <Grid item sx={gridSubeventStyle} xs={12} sm={6} md={4} xl={3} key={key}>
-                <Card sx={{ maxWidth: 345 }}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={flyer}
-                  />
-                  <CardContent sx={{ alignItems:'center', display:'flex', flexDirection:'column' }}>
-                    <Typography gutterBottom variant="h5" component="div">{name}</Typography>
-                    <Typography variant="body2" color="text.secondary" mb={2}>{description}</Typography>
-                    <Button variant='contained' onClick={() => Router.push(`/subevents/${id}`)}>Ver</Button>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
+            {eventData?.subevents.map((subevent, key) => <SubeventCard {...subevent} key={key}/>)}
           </Grid>
         </PaddingContainer>
       </GlobalContainer>
@@ -78,6 +66,57 @@ export default function events() {
   else if (!isLoading && eventData === null) return <NoEventAvailable/>
   else if (isLoading) return <LoadingEvent/>
   else return <></>
+}
+
+type SubeventCardProps = SubeventRequest;
+
+function SubeventCard ({ flyer, name, description, id, event, initDate }:SubeventCardProps) {
+
+  const [eventType, setEventType] = useState('');
+
+  useEffect(() => {
+    switch (event) {
+      case 1:
+        setEventType('Taller')
+        break;
+      case 2:
+        setEventType('Curso')
+        break;
+      case 3:
+        setEventType('Conferencia')
+        break;
+      case 4:
+        setEventType('Práctica')
+        break;
+    }
+  }, [])
+  
+  return (
+    <Grid item sx={gridSubeventStyle} xs={12} sm={6} md={4} xl={3}>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height="140"
+          image={flyer}
+        />
+        <CardContent sx={{ alignItems:'center', display:'flex', flexDirection:'column' }}>
+          <Typography gutterBottom variant="h5" component="div">{name}</Typography>
+          <Typography variant="body2" color="text.secondary" mb={2}>{description}</Typography>
+          <Chip 
+            icon={<StadiumIcon />} 
+            label={eventType} 
+            sx={{ mb:1 }}
+          />
+          <Chip 
+            icon={<CalendarMonthIcon />} 
+            label={initDate} 
+            sx={{ mb:2 }}
+          />
+          <Button variant='contained' onClick={() => Router.push(`/subevents/${id}`)}>Ver</Button>
+        </CardContent>
+      </Card>
+    </Grid>
+  )
 }
 
 function NoEventAvailable () {
