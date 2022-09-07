@@ -4,6 +4,7 @@ import { axiosInstance } from "../utils/axiosInstance";
 // Types
 import { 
   EventDataRequest, 
+  GetSchoolsAndCarrersData, 
   NewData, 
   RecommendationData, 
   RegisterSubeventData, 
@@ -28,4 +29,8 @@ export function submitRecommendationApi (data:RecommendationData) {
 
 export function submitRegisterToSubevent (data:RegisterSubeventData) {
   return axiosInstance.post(`/api/assistant.php?idSubevent=${data.id}`, data)
+}
+
+export function getSchoolsAndCareersApi () {
+  return axiosInstance.get<GetSchoolsAndCarrersData>('/api/assistant.php');
 }

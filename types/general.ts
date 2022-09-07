@@ -72,3 +72,10 @@ export type RegisterSubeventData = {
   controlNumber:string;
   id:number;
 }
+
+export type GetSchoolsAndCarrersData = {
+  schools: SchoolOrCarrerData[];
+  careers: SchoolOrCarrerData[];
+}
+
+export type SchoolOrCarrerData = { id:number, name:string, visible:boolean }

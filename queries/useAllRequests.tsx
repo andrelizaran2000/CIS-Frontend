@@ -5,6 +5,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { 
   getEventsApi, 
   getNewsApi, 
+  getSchoolsAndCareersApi, 
   getSubeventInformationApi, 
   submitRecommendationApi, 
   submitRegisterToSubevent
@@ -48,12 +49,17 @@ export default function useAllRequests () {
     })
   }
 
+  function useGetSchoolsAndCareersQuery () {
+    return useQuery(['get-schools-and-careers'], getSchoolsAndCareersApi);
+  }
+
   return {
     useGetNewsMutation,
     useGetEventsQuery,
     useGetSubeventInformationMutation,
     useSubmitRecommendationMutation,
-    useSubmitRegisterSubeventMutation
+    useSubmitRegisterSubeventMutation,
+    useGetSchoolsAndCareersQuery
   }
   
 }

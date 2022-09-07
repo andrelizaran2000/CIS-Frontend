@@ -1,21 +1,25 @@
 // Modules
-import React, { useState } from 'react';
-import { Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import { blueGrey, grey } from '@mui/material/colors';
+import { Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from '@mui/material';
 
 // Components
 import GlobalContainer from '../../components/containers/GlobalContainer';
 import PaddingContainer from '../../components/containers/PaddingContainer';
-import { RegisterSubeventData } from '../../types/general';
+
+// Hooks
 import useAllRequests from '../../queries/useAllRequests';
-import { useRouter } from 'next/router';
+
+// Types
+import { RegisterSubeventData, SchoolOrCarrerData } from '../../types/general';
 
 const initialState:RegisterSubeventData = {
   controlNumber:'',
   name:'',
   email:'',
-  school:1,
-  career:1,
+  school:0,
+  career:0,
   id:0
 }
 
@@ -24,15 +28,22 @@ export default function Register () {
   const router = useRouter()
   const { id } = router.query;
   const [ formValues, setFormValues ] = useState(initialState);
-  const { email, name, controlNumber } = formValues;
+  const { email, name, controlNumber, school } = formValues;
   const { useSubmitRegisterSubeventMutation } = useAllRequests();
   const { mutate, isLoading } = useSubmitRegisterSubeventMutation(onSuccess);
 
   function validateForm () {
-    if (!email || !name || !controlNumber) {
-      alert('Es necesario ingresar todos los datos del formulario');
-      return false;
-    } else return true;
+    if (school === 1) {
+      if (!email || !name || !controlNumber || !controlNumber) {
+        alert('Es necesario ingresar todos los datos del formulario');
+        return false;
+      } return true;
+    } else {
+      if (!email || !name) {
+        alert('Es necesario ingresar todos los datos del formulario');
+        return false;
+      } else return true;
+    }
   }
 
   function submitRegister () {
@@ -52,7 +63,7 @@ export default function Register () {
   return (
     <GlobalContainer title='Registrarse'>
       <PaddingContainer backgroundColor={grey[200]}>
-        <Grid container spacing={{ xs:4, sm:20 }}>
+        <Grid container spacing={{ xs:4, sm:20 }} sx={{ paddingY:10 }}>
           <Grid item sm={5} lg={4} sx={{ display:{ xs:'none', sm:'flex' }, flexDirection:'column', justifyContent:'center' }}>
             <img src='/assets/register/main.png'/>
           </Grid>
@@ -62,13 +73,21 @@ export default function Register () {
                 <Typography variant='h5' sx={{ textAlign:'center', color:blueGrey[900] }}>
                   <b>Regístrate</b>
                 </Typography>
-                <TextField
-                  label='Número de control'
-                  onChange={(e) => handleForm(e.target.name, e.target.value)}
-                  name='controlNumber'
-                  disabled={isLoading}
-                  value={controlNumber}
+                <SchoolAndCareerSelect
+                  schoolValue={formValues.school}
+                  careerValue={formValues.career}
+                  handleForm={handleForm}
                 />
+                { 
+                  formValues.school === 1 && 
+                  <TextField
+                    label='Matrícula'
+                    onChange={(e) => handleForm(e.target.name, e.target.value)}
+                    name='controlNumber'
+                    disabled={isLoading}
+                    value={controlNumber}
+                  />
+                }
                 <TextField
                   label='Nombre completo'
                   onChange={(e) => handleForm(e.target.name, e.target.value)}
@@ -83,13 +102,6 @@ export default function Register () {
                   disabled={isLoading}
                   value={email}
                 />
-                {/* <TextField
-                  label='Carrera / Escuela'
-                  onChange={(e) => handleForm(e.target.name, e.target.value)}
-                  name='school'
-                  disabled={isLoading}
-                  value={}
-                /> */}
                 <Button variant='contained' type='submit'>Registrarse</Button>
               </Paper>
             </form>
@@ -97,5 +109,53 @@ export default function Register () {
         </Grid>
       </PaddingContainer>
     </GlobalContainer>
+  )
+}
+
+function SchoolAndCareerSelect ({ careerValue, schoolValue, handleForm }:any) {
+
+  const { useGetSchoolsAndCareersQuery } = useAllRequests();
+  const { isLoading, data } = useGetSchoolsAndCareersQuery();
+  const [ careers, setCareers ] = useState<SchoolOrCarrerData[]>([]);
+  const [ schools, setSchools ] = useState<SchoolOrCarrerData[]>([]);
+
+  useEffect(() => {
+    if (data !== undefined) {
+      setCareers(data.data.careers)
+      setSchools(data.data.schools)
+    }
+  }, [data])
+
+  return (
+    <>
+      <FormControl fullWidth>
+        <InputLabel>Escuela</InputLabel>
+        <Select
+          label="Escuela"
+          value={schoolValue}
+          onChange={(e) => handleForm(e.target.name, e.target.value)}
+          disabled={isLoading}
+          name='school'
+        >
+          {schools.map(({ id, name }) => <MenuItem value={id}>{name}</MenuItem>)}
+        </Select>
+      </FormControl>
+
+      {
+        schoolValue === 1 &&
+        <FormControl fullWidth>
+          <InputLabel>Carrera</InputLabel>
+          <Select
+            label="Carrera"
+            value={careerValue}
+            onChange={(e) => handleForm(e.target.name, e.target.value)}
+            disabled={isLoading}
+            name='career'
+          >
+            {careers.map(({ id, name }) => <MenuItem value={id}>{name}</MenuItem>)}
+          </Select>
+        </FormControl>
+      }
+    </>
   )
 }
