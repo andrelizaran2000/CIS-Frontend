@@ -14,6 +14,7 @@ import PaddingContainer from '../../components/containers/PaddingContainer';
 // Icons
 import StadiumIcon from '@mui/icons-material/Stadium';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 // Types
 import { SubeventData } from '../../types/general';
@@ -23,7 +24,7 @@ export default function SubeventPage () {
   const router = useRouter()
   const { id } = router.query;
   const { useGetSubeventInformationMutation } = useAllRequests();
-  const { mutate, data } = useGetSubeventInformationMutation();
+  const { mutate, data, isLoading } = useGetSubeventInformationMutation();
   const [ subeventData, setSubeventData ] = useState<null | SubeventData>(null)
 
   useEffect(() => {
@@ -31,16 +32,25 @@ export default function SubeventPage () {
   }, [id]);
 
   useEffect(() => {
-    if (data !== undefined) setSubeventData(data.data);
+    if (data?.data.id !== undefined) setSubeventData(data.data);
   }, [data]);
 
-  if (subeventData === null) {
+  if (!isLoading && subeventData === null) {
     return (
-      <GlobalContainer title='Cargando'>
-        <LoadingScreen/>
+      <GlobalContainer title='Eventos'>
+        <PaddingContainer backgroundColor={grey[300]}>
+          <Stack sx={{ paddingY:20 }}>
+            <Paper>
+              <Stack sx={{ padding:3, textAlign:'center', alignItems:'center', rowGap:1 }}>
+                <Typography variant='h6'>No hay subevento con este ID</Typography>
+                <SentimentVeryDissatisfiedIcon fontSize='large' sx={{ color:grey[700] }}/>
+              </Stack>
+            </Paper>
+          </Stack>
+        </PaddingContainer>
       </GlobalContainer>
     )
-  } else {
+  } else if (!isLoading && subeventData !== null) {
     return (
       <GlobalContainer title='Subevento'>
         <PaddingContainer backgroundColor={grey[200]}>
@@ -52,7 +62,7 @@ export default function SubeventPage () {
               <Paper sx={{ padding:4, display:'flex', flexDirection:'column', width:'100%' }}>
                 <Typography variant='h6' mb={1}><b>{subeventData.name}</b></Typography>
                 <Typography sx={{ mb:2 }}>{subeventData.description}</Typography>
-                <Chip 
+                <Chip
                   icon={<StadiumIcon />} 
                   label={subeventData.type.name} 
                   sx={{ mb:1, alignSelf:'start' }}
@@ -85,7 +95,13 @@ export default function SubeventPage () {
         </PaddingContainer>
       </GlobalContainer>
     )
-  }
+  } else if (isLoading) {
+    return (
+      <GlobalContainer title='Cargando'>
+        <LoadingScreen/>
+      </GlobalContainer>
+    )
+  } else return <></> 
 }
 
 const speakerContainer = {
