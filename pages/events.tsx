@@ -35,11 +35,9 @@ export default function events() {
   const { useGetEventsQuery } = useAllRequests();
   const { data, isLoading } = useGetEventsQuery();
   const [ eventData, setEventData ] = useState<EventDataRequest | null>(null);
-  const [ isEventAvailable, setIsEventAvailable ] = useState(true);
 
   useEffect(() => {
     if (data !== undefined && data.data.id !== undefined) setEventData(data.data);
-    else setIsEventAvailable(false) 
   }, [data]);
 
   if (!isLoading && eventData !== null) {

@@ -77,6 +77,7 @@ export default function Register () {
                   schoolValue={formValues.school}
                   careerValue={formValues.career}
                   handleForm={handleForm}
+                  isSubmiting={isLoading}
                 />
                 { 
                   formValues.school === 1 && 
@@ -112,7 +113,7 @@ export default function Register () {
   )
 }
 
-function SchoolAndCareerSelect ({ careerValue, schoolValue, handleForm }:any) {
+function SchoolAndCareerSelect ({ careerValue, schoolValue, handleForm, isSubmiting }:any) {
 
   const { useGetSchoolsAndCareersQuery } = useAllRequests();
   const { isLoading, data } = useGetSchoolsAndCareersQuery();
@@ -134,7 +135,7 @@ function SchoolAndCareerSelect ({ careerValue, schoolValue, handleForm }:any) {
           label="Escuela"
           value={schoolValue}
           onChange={(e) => handleForm(e.target.name, e.target.value)}
-          disabled={isLoading}
+          disabled={isLoading || isSubmiting}
           name='school'
         >
           {schools.map(({ id, name }) => <MenuItem value={id}>{name}</MenuItem>)}
@@ -149,7 +150,7 @@ function SchoolAndCareerSelect ({ careerValue, schoolValue, handleForm }:any) {
             label="Carrera"
             value={careerValue}
             onChange={(e) => handleForm(e.target.name, e.target.value)}
-            disabled={isLoading}
+            disabled={isLoading || isSubmiting}
             name='career'
           >
             {careers.map(({ id, name }) => <MenuItem value={id}>{name}</MenuItem>)}
