@@ -60,9 +60,9 @@ export default function contact() {
         <Typography variant='h4' color='white' textAlign='center' mb={4}>
           <b>Contáctanos</b>
         </Typography>
-        <Grid container spacing={{ xs:4, lg:20 }} mb={4}>
+        <Grid container spacing={{ xs:4, lg:10 }} mb={4}>
           <Grid item xs={0} md={6} sx={{ display:{ xs:'none', md:'flex' }, alignItems:'center', flexDirection:'center', justifyContent:'center' }}>
-            <img src='/assets/contact/contact-img.png' style={{ maxWidth:300 }}/>
+            <img src='/assets/contact/contact-img.png' style={{ maxWidth:350 }}/>
           </Grid>
           <Grid item xs={12} md={6} sx={{ display:'flex', flexDirection:'column' }}>
             <Paper>

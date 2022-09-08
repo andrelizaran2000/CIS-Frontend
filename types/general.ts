@@ -30,6 +30,7 @@ export type SubeventRequest = {
   endDate:string;
   hasRegistration:string;
   flyer:string;
+  type:{ name:string };
 }
 
 export type SubeventData = {
@@ -45,6 +46,7 @@ export type SubeventData = {
   name:string;
   numAssistants:string;
   speakers: Speakers[];
+  type:{ name:string };
 }
 
 type Speakers = {

@@ -25,7 +25,6 @@ export default function NextEvent () {
   const { useGetEventsQuery } = useAllRequests();
   const { data, isLoading } = useGetEventsQuery();
   const [ subeventData, setSubeventData ] = useState<null | SubeventRequest>(null);
-  const [ eventType, setEventType ] = useState('');
 
   useEffect(() => {
     if (data?.data.id !== undefined) {
@@ -33,20 +32,6 @@ export default function NextEvent () {
       const { subevents } = newData;
       if (subevents.length > 0) { 
         setSubeventData(subevents[0]);
-        switch (subevents[0].event) {
-          case 1:
-            setEventType('Taller')
-            break;
-          case 2:
-            setEventType('Curso')
-            break;
-          case 3:
-            setEventType('Conferencia')
-            break;
-          case 4:
-            setEventType('Práctica')
-            break;
-        }
       }
     }
   }, [data]);
@@ -65,7 +50,7 @@ export default function NextEvent () {
               <Typography variant='h6' sx={{ color:blueGrey[900] }}>{subeventData?.description}</Typography>
               <Chip 
                 icon={<StadiumIcon />} 
-                label={eventType} 
+                label={subeventData?.type.name} 
               />
               <Chip 
                 icon={<CalendarMonthIcon />} 
@@ -79,7 +64,7 @@ export default function NextEvent () {
             </Stack>
           </Grid>
           <Grid item xs={12} sm={6} sx={{ display:'flex', alignItems:'end', justifyContent:'end' }}>
-            <img src={subeventData?.flyer} style={{ width:'100%', maxWidth:450 }}/>
+            <img src={subeventData?.flyer} style={{ width:'100%', maxWidth:450, borderRadius:5 }}/>
           </Grid>
         </Grid>
       </PaddingContainer>

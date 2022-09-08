@@ -70,27 +70,7 @@ export default function events() {
 
 type SubeventCardProps = SubeventRequest;
 
-function SubeventCard ({ flyer, name, description, id, event, initDate }:SubeventCardProps) {
-
-  const [eventType, setEventType] = useState('');
-
-  useEffect(() => {
-    switch (event) {
-      case 1:
-        setEventType('Taller')
-        break;
-      case 2:
-        setEventType('Curso')
-        break;
-      case 3:
-        setEventType('Conferencia')
-        break;
-      case 4:
-        setEventType('Práctica')
-        break;
-    }
-  }, [])
-  
+function SubeventCard ({ flyer, name, description, id, event, initDate, type }:SubeventCardProps) {
   return (
     <Grid item sx={gridSubeventStyle} xs={12} sm={6} md={4} xl={3}>
       <Card sx={{ maxWidth: 345 }}>
@@ -104,7 +84,7 @@ function SubeventCard ({ flyer, name, description, id, event, initDate }:Subeven
           <Typography variant="body2" color="text.secondary" mb={2}>{description}</Typography>
           <Chip 
             icon={<StadiumIcon />} 
-            label={eventType} 
+            label={type.name} 
             sx={{ mb:1 }}
           />
           <Chip 

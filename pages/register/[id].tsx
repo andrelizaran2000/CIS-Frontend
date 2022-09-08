@@ -63,7 +63,7 @@ export default function Register () {
   return (
     <GlobalContainer title='Registrarse'>
       <PaddingContainer backgroundColor={grey[200]}>
-        <Grid container spacing={{ xs:4, sm:20 }} sx={{ paddingY:10 }}>
+        <Grid container spacing={{ xs:4, sm:20 }} sx={{ paddingY:20 }}>
           <Grid item sm={5} lg={4} sx={{ display:{ xs:'none', sm:'flex' }, flexDirection:'column', justifyContent:'center' }}>
             <img src='/assets/register/main.png'/>
           </Grid>
