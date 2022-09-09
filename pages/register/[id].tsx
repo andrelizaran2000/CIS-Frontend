@@ -138,7 +138,7 @@ function SchoolAndCareerSelect ({ careerValue, schoolValue, handleForm, isSubmit
           disabled={isLoading || isSubmiting}
           name='school'
         >
-          {schools.map(({ id, name }) => <MenuItem value={id}>{name}</MenuItem>)}
+          {schools.map(({ id, name }, key) => <MenuItem value={id} key={key}>{name}</MenuItem>)}
         </Select>
       </FormControl>
 
@@ -153,7 +153,7 @@ function SchoolAndCareerSelect ({ careerValue, schoolValue, handleForm, isSubmit
             disabled={isLoading || isSubmiting}
             name='career'
           >
-            {careers.map(({ id, name }) => <MenuItem value={id}>{name}</MenuItem>)}
+            {careers.map(({ id, name }, key) => <MenuItem value={id} key={key}>{name}</MenuItem>)}
           </Select>
         </FormControl>
       }
